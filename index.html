@@ -1,80 +1,97 @@
-<!-- Sim bro eu usei IA -->
-
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfólio de BanguelaDev - Desenvolvedor de Sistemas, Games e Automações">
-  <meta name="theme-color" content="#09060f">
-  <title>BanguelaDev — Portfólio</title>
+  <meta name="description"
+    content="BanguelaDev — Game Developer, LuaU Scripter & Systems Engineer. From simple scripts to full-scale systems.">
+  <title>BanguelaDev — Developer Portfolio & CV</title>
+
+  <!-- Fonts: Bricolage Grotesque for Headings, Hanken Grotesk for Body, JetBrains Mono for Code/Tags -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400..700&family=JetBrains+Mono:wght@500;700&display=swap"
     rel="stylesheet">
+
   <style>
     :root {
-      --bg: #09060f;
-      --surface: #120b1e;
-      --surface-light: #1d1230;
-      --line: #ffffff18;
-      --text: #fbf8ff;
-      --muted: #bdb2cb;
-      --purple: #b566ff;
-      --purple-glow: #a557ff40;
-      --lilac: #e1c5ff;
-      --green: #2be216;
-      --max: 1160px;
+      /* Light Mode (Editorial Paper) */
+      --paper: #ECE6D8;
+      --paper-card: #F4EFE4;
+      --paper-card-hover: #EBE4D5;
+      --ink: #15120D;
+      --ink-2: #3D382E;
+      --ink-3: #645E4D;
+      --accent: #2563EB;
+      --accent-hover: #1D4ED8;
+      --accent-light: #DBEAFE;
+      --accent-text: #1E40AF;
+      --line: rgba(21, 18, 13, 0.16);
+      --line-strong: rgba(21, 18, 13, 0.28);
+      --head-bg: rgba(236, 230, 216, 0.90);
+      --grain-opacity: 0.15;
+      --grain-blend: multiply;
+      --shadow: 4px 4px 0px var(--line-strong);
+      --shadow-hover: 6px 6px 0px var(--accent);
+      --ease: cubic-bezier(0.23, 1, 0.32, 1);
+      --max: 1200px;
+    }
+
+    html[data-theme="dark"] {
+      /* Dark Mode (Cool Obsidian) */
+      --paper: #0E1014;
+      --paper-card: #151820;
+      --paper-card-hover: #1D222C;
+      --ink: #F3F1EC;
+      --ink-2: #C4C7C1;
+      --ink-3: #888C86;
+      --accent: #3B82F6;
+      --accent-hover: #60A5FA;
+      --accent-light: #1E293B;
+      --accent-text: #93C5FD;
+      --line: rgba(243, 241, 236, 0.14);
+      --line-strong: rgba(243, 241, 236, 0.25);
+      --head-bg: rgba(14, 16, 20, 0.90);
+      --grain-opacity: 0.08;
+      --grain-blend: overlay;
+      --shadow: 4px 4px 0px var(--line-strong);
+      --shadow-hover: 6px 6px 0px var(--accent);
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      color-scheme: dark light;
     }
 
     body {
-      margin: 0;
-      min-width: 320px;
-      color: var(--text);
-      background: var(--bg);
-      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      overflow-x: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color .35s var(--ease), color .35s var(--ease);
     }
 
-    body::before {
-      content: "";
+    /* Grain Overlay - Anti AI-gradient effect */
+    .grain {
       position: fixed;
-      z-index: -2;
       inset: 0;
-      background: radial-gradient(circle at 80% 6%, #6d289452, transparent 32%), radial-gradient(circle at 6% 48%, #35176352, transparent 30%), var(--bg);
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      z-index: -1;
-      inset: 0;
+      z-index: 999;
       pointer-events: none;
-      opacity: .25;
-      background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: linear-gradient(#000, transparent 75%);
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    .brand,
-    .button,
-    .tag {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+      opacity: var(--grain-opacity);
+      mix-blend-mode: var(--grain-blend);
     }
 
     a {
@@ -85,432 +102,453 @@
     button {
       font: inherit;
       cursor: pointer;
-    }
-
-    .shell {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-    }
-
-    /* Header / Nav */
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      height: 82px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      letter-spacing: -.04em;
-      font-size: 1.25rem;
-    }
-
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 31px;
-      height: 31px;
-      border: 1px solid #dabbff88;
-      border-radius: 10px 10px 4px;
-      color: var(--lilac);
-      background: #a557ff1c;
-      transform: rotate(-8deg);
-    }
-
-    .brand span {
-      color: var(--purple);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      color: var(--muted);
-      font-size: .9rem;
-      font-weight: 600;
-    }
-
-    .nav-links a {
-      transition: color .2s ease;
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-
-    .nav-cta {
-      padding: 10px 18px;
-      border: 1px solid #c981ff77;
-      border-radius: 999px;
-      color: #fff !important;
-      background: #9e48e117;
-      transition: background .2s, border-color .2s;
-    }
-
-    .nav-cta:hover {
-      background: #a557ff33;
-      border-color: var(--purple);
-    }
-
-    /* Hero */
-    .hero {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      min-height: 620px;
-      align-items: center;
-      gap: 48px;
-      padding: 60px 0 72px;
-    }
-
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 18px;
-      color: var(--lilac);
-      font-size: .75rem;
-      font-weight: 800;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 26px;
-      height: 2px;
-      background: var(--purple);
-      border-radius: 2px;
+      border: none;
+      background: none;
     }
 
     h1,
     h2,
     h3,
-    p {
-      margin-top: 0;
+    h4,
+    .font-head {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
     }
 
-    h1 {
-      max-width: 690px;
+    .shell {
+      width: min(var(--max), calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    /* ──────── HEADER & CONTROLS ──────── */
+    .site-head {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: var(--head-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      transition: padding .3s var(--ease);
+    }
+
+    .head-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 7px;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      transform: rotate(-6deg);
+      transition: transform .25s var(--ease);
+    }
+
+    .brand:hover .brand-mark {
+      transform: rotate(0deg) scale(1.08);
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding: 4px 0;
+      color: var(--ink-2);
+      transition: color .2s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Language Switcher Pill */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: var(--paper-card);
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      padding: 3px;
+      gap: 2px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .lang-btn {
+      padding: 4px 10px;
+      border-radius: 99px;
+      color: var(--ink-3);
+      transition: all .2s var(--ease);
+    }
+
+    .lang-btn:hover {
+      color: var(--ink);
+    }
+
+    .lang-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      background: var(--paper-card);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      transition: transform .2s var(--ease), border-color .2s var(--ease);
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: scale(1.05);
+    }
+
+    .theme-toggle:active {
+      transform: scale(0.95);
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .icon-sun {
+      display: none;
+    }
+
+    html[data-theme="dark"] .icon-sun {
+      display: block;
+    }
+
+    html[data-theme="dark"] .icon-moon {
+      display: none;
+    }
+
+    /* ──────── HERO SECTION ──────── */
+    .hero {
+      padding: 150px 0 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 99px;
+      border: 1px solid var(--line);
+      background: var(--paper-card);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ink-2);
       margin-bottom: 24px;
-      font-size: clamp(3rem, 6.5vw, 5.8rem);
-      line-height: 1.08;
-      letter-spacing: -.04em;
-      font-weight: 900;
     }
 
-    h1 strong {
-      color: var(--lilac);
+    .hero-badge i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 10px #22C55E;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.2vw, 4.4rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 strong {
+      color: var(--accent);
       font-weight: inherit;
     }
 
-    h1 em {
-      color: var(--purple);
-      font-style: normal;
-    }
-
-    .intro {
+    .hero-intro {
+      font-size: 1.15rem;
+      color: var(--ink-2);
       max-width: 580px;
-      color: var(--muted);
-      font-size: 1.1rem;
-      line-height: 1.7;
+      line-height: 1.65;
+      margin-bottom: 32px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-top: 32px;
     }
 
-    .button {
+    .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 9px;
-      min-height: 48px;
-      padding: 0 22px;
-      border: 1px solid transparent;
-      border-radius: 14px;
-      font-weight: 800;
-      font-size: .92rem;
-      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+      gap: 10px;
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-weight: 700;
+      font-size: 0.98rem;
+      padding: 13px 26px;
+      border-radius: 12px;
+      border: 2px solid var(--ink);
+      transition: transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease), color .18s var(--ease);
     }
 
-    .button:hover {
-      transform: translateY(-3px);
+    .btn-primary {
+      background: var(--ink);
+      color: var(--paper);
+      box-shadow: var(--shadow);
     }
 
-    .button-primary {
-      color: #190b2a;
-      background: linear-gradient(135deg, #d89aff, #a957ef);
-      box-shadow: 0 14px 32px #7e36b843;
+    .btn-primary:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translate(-2px, -2px);
     }
 
-    .button-primary:hover {
-      box-shadow: 0 18px 38px #7e36b866;
+    .btn-secondary {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line-strong);
     }
 
-    .button-secondary {
-      border-color: var(--line);
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text);
+    .btn-secondary:hover {
+      background: var(--paper-card);
+      border-color: var(--ink);
     }
 
-    .button-secondary:hover {
-      border-color: #d6a4ff8c;
-      background: rgba(255, 255, 255, 0.07);
-      box-shadow: 0 12px 24px #0005;
-    }
-
-    /* Hero Art */
+    /* Hero Avatar Frame */
     .hero-art {
       position: relative;
-      min-height: 460px;
-      isolation: isolate;
     }
 
-    .hero-art::before {
-      content: "";
-      position: absolute;
-      inset: 10% 5% 4% 8%;
-      z-index: -1;
-      border-radius: 50%;
-      background: radial-gradient(circle, #b562f64e, transparent 64%);
-      filter: blur(16px);
-    }
-
-    .cover-frame {
-      position: absolute;
-      inset: 0 0 0 8%;
+    .cover-card {
+      position: relative;
+      border-radius: 20px;
+      border: 2px solid var(--line-strong);
+      background: var(--paper-card);
       overflow: hidden;
-      border: 1px solid #e4c7ff45;
-      border-radius: 32px;
-      background: var(--surface);
-      box-shadow: 18px 25px 60px #0008;
-      transform: rotate(2deg);
-      transition: transform .45s cubic-bezier(.2, .8, .2, 1);
+      box-shadow: var(--shadow);
+      aspect-ratio: 4 / 3;
     }
 
-    .hero-art:hover .cover-frame {
-      transform: rotate(0) translateY(-5px);
-    }
-
-    .cover-frame::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 35%, #09060fca 100%), linear-gradient(100deg, #400e711c, transparent 60%);
-    }
-
-    .cover-frame img {
+    .cover-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 53% 40%;
-      filter: saturate(.82) contrast(1.05);
+      object-position: center 35%;
+      display: block;
     }
 
-    .image-label {
+    .cover-caption {
       position: absolute;
-      z-index: 1;
-      bottom: 25px;
-      left: 31px;
-      display: grid;
-      gap: 4px;
-    }
-
-    .image-label b {
-      font-size: 1.2rem;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
-    }
-
-    .image-label span {
-      color: #e2d1ef;
-      font-size: .85rem;
-      font-weight: 500;
-    }
-
-    .badge {
-      position: absolute;
-      z-index: 2;
-      top: 20px;
-      right: -12px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 24px;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+      color: #fff;
       display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 11px 16px;
-      border: 1px solid #f3c08d61;
-      border-radius: 14px;
-      color: #fee5c7;
-      background: #201323e6;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 15px 30px #0007;
-      font-size: .8rem;
-      font-weight: 800;
+      justify-content: space-between;
+      align-items: flex-end;
     }
 
-    .badge i {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 14px var(--green);
+    .cover-caption b {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.3rem;
     }
 
-    /* Section Styling & Spacing Fixes */
+    .cover-caption span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+
+    /* ──────── SECTION LAYOUTS ──────── */
     section {
-      padding: 100px 0;
+      padding: 90px 0;
+      border-bottom: 1px solid var(--line);
     }
 
-    .section-heading {
-      display: grid;
-      grid-template-columns: 1fr .8fr;
-      align-items: end;
-      gap: 40px;
+    .sec-head {
       margin-bottom: 48px;
     }
 
-    .section-heading h2 {
-      margin-bottom: 0;
-      font-size: clamp(2.2rem, 4.4vw, 4rem);
-      letter-spacing: -.035em;
-      line-height: 1.18;
+    .sec-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .sec-title {
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
       font-weight: 800;
+      margin-bottom: 12px;
     }
 
-    .section-heading>p {
-      max-width: 460px;
-      margin-bottom: 5px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 1.02rem;
+    .sec-subtitle {
+      font-size: 1.08rem;
+      color: var(--ink-2);
+      max-width: 600px;
     }
 
-    /* About Section */
-    .about {
+    /* ──────── ABOUT & CV APPROACH ──────── */
+    .about-grid {
       display: grid;
-      grid-template-columns: .82fr 1.18fr;
-      gap: 28px;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
     }
 
-    .about-card,
-    .skill-card,
-    .project-card,
-    .discord-card {
+    .cv-card {
+      background: var(--paper-card);
       border: 1px solid var(--line);
-      border-radius: 24px;
-      background: linear-gradient(145deg, #1c102cbd, #0e0917ed);
-      box-shadow: 0 18px 45px #0003;
-    }
-
-    .about-card {
+      border-radius: 16px;
       padding: 36px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .about-card h3 {
-      margin-bottom: 14px;
+    .cv-card h3 {
       font-size: 1.5rem;
-      letter-spacing: -.02em;
-      font-weight: 800;
-      color: var(--lilac);
+      margin-bottom: 16px;
+      color: var(--ink);
     }
 
-    .about-card p {
-      margin-bottom: 0;
-      color: var(--muted);
+    .cv-card p {
+      color: var(--ink-2);
       line-height: 1.7;
-      font-size: 1.02rem;
+      margin-bottom: 16px;
     }
 
-    .skills {
+    .cv-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ──────── SKILLS MATRIX ──────── */
+    .skills-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      gap: 20px;
     }
 
-    .skill-card {
+    .skill-box {
+      background: var(--paper-card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px;
       position: relative;
-      min-height: 152px;
-      padding: 26px;
       overflow: hidden;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+      transition: transform .2s var(--ease), border-color .2s var(--ease);
     }
 
-    .skill-card:hover {
-      transform: translateY(-5px);
-      border-color: #ca8bff88;
-      box-shadow: 0 14px 30px #a557ff1a;
+    .skill-box:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
     }
 
-    .skill-card::after {
-      content: attr(data-mark);
+    .skill-tag {
       position: absolute;
-      right: -5px;
-      bottom: -25px;
-      color: #d99fff12;
-      font-size: 6.8rem;
-      font-weight: 900;
-      letter-spacing: -.1em;
-      pointer-events: none;
+      top: 20px;
+      right: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-text);
+      background: var(--accent-light);
+      padding: 4px 10px;
+      border-radius: 6px;
     }
 
-    .skill-card b,
-    .skill-card p {
-      position: relative;
-      z-index: 1;
-    }
-
-    .skill-card b {
-      display: block;
+    .skill-box h4 {
+      font-size: 1.25rem;
       margin-bottom: 8px;
-      font-size: 1.15rem;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: 800;
+      padding-right: 60px;
     }
 
-    .skill-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: .9rem;
+    .skill-box p {
+      color: var(--ink-2);
+      font-size: 0.94rem;
       line-height: 1.6;
     }
 
-    /* Projects Section & Video Player */
-    .projects {
+    /* ──────── PROJECTS GRID & VIDEO PLAYER ──────── */
+    .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 28px;
     }
 
     .project-card {
+      background: var(--paper-card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
       overflow: hidden;
-      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+      transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease);
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
-      border-color: #c88bff88;
-      box-shadow: 0 20px 40px #a557ff1c;
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
     }
 
     .project-media {
       position: relative;
       aspect-ratio: 16 / 9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: #000;
       overflow: hidden;
-      background: radial-gradient(circle at 35% 30%, #8c3fbe50, transparent 40%), linear-gradient(135deg, #1b0e2f, #0d0816);
     }
 
     .project-media video {
@@ -518,22 +556,10 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      cursor: pointer;
     }
 
-    .project-media .media-placeholder {
-      display: grid;
-      place-items: center;
-      width: 62px;
-      height: 62px;
-      border: 1px solid #edd5ff8f;
-      border-radius: 50%;
-      color: var(--lilac);
-      background: #110a20a6;
-      font-size: 1.45rem;
-      box-shadow: 0 0 0 11px #b25dff18;
-    }
-
-    /* Custom Video Controls & Always-Visible Progress Bar */
+    /* Video Player Overlay Controls */
     .video-overlay-controls {
       position: absolute;
       top: 12px;
@@ -541,7 +567,7 @@
       display: flex;
       gap: 8px;
       opacity: 0;
-      transition: opacity .25s ease;
+      transition: opacity .2s var(--ease);
       z-index: 5;
     }
 
@@ -550,24 +576,23 @@
     }
 
     .video-btn {
-      display: grid;
-      place-items: center;
       width: 34px;
       height: 34px;
-      padding: 0;
-      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 50%;
-      background: rgba(14, 9, 23, 0.75);
-      backdrop-filter: blur(6px);
+      background: rgba(14, 16, 20, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: #fff;
+      display: grid;
+      place-items: center;
       transition: background .2s, transform .15s;
     }
 
     .video-btn:hover {
-      background: rgba(181, 102, 255, 0.85);
+      background: var(--accent);
       transform: scale(1.08);
     }
 
+    /* Always Visible Video Progress Bar */
     .video-progress-container {
       position: absolute;
       bottom: 0;
@@ -577,7 +602,7 @@
       background: rgba(0, 0, 0, 0.45);
       cursor: pointer;
       z-index: 6;
-      transition: height .2s ease;
+      transition: height .2s var(--ease);
     }
 
     .project-media:hover .video-progress-container {
@@ -587,184 +612,119 @@
     .video-progress-bar {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--purple), var(--lilac));
-      box-shadow: 0 0 10px var(--purple);
+      background: var(--accent);
       transition: width .1s linear;
       position: relative;
     }
 
-    .video-progress-bar::after {
-      content: "";
-      position: absolute;
-      right: -4px;
-      top: -2px;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #fff;
-      box-shadow: 0 0 8px var(--purple);
-      opacity: 0;
-      transition: opacity .2s;
-    }
-
-    .project-media:hover .video-progress-bar::after {
-      opacity: 1;
-    }
-
-    /* Project Content */
-    .project-content {
-      padding: 28px;
+    .project-body {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .project-meta {
       display: flex;
       gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 14px;
-    }
-
-    .tag {
-      padding: 5px 12px;
-      border: 1px solid #c88cff3d;
-      border-radius: 999px;
-      color: #debcff;
-      background: #b65cff15;
-      font-size: .74rem;
-      font-weight: 800;
-      letter-spacing: .02em;
-    }
-
-    .project-content h3 {
-      margin-bottom: 10px;
-      font-size: 1.45rem;
-      letter-spacing: -.03em;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .project-content p {
-      margin-bottom: 0;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: .94rem;
-    }
-
-    /* Discord Section */
-    .discord-card {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 32px;
-      align-items: center;
-      padding: 44px;
-      overflow: hidden;
-    }
-
-    .discord-card::before {
-      content: "";
-      position: absolute;
-      width: 420px;
-      height: 420px;
-      right: -100px;
-      top: -170px;
-      border: 1px solid #ba75ff2b;
-      border-radius: 50%;
-      box-shadow: 0 0 0 35px #ba75ff0c, 0 0 0 70px #ba75ff08;
-      pointer-events: none;
-    }
-
-    .discord-copy,
-    .discord-action {
-      position: relative;
-      z-index: 1;
-    }
-
-    .discord-copy .eyebrow {
       margin-bottom: 12px;
     }
 
-    .discord-copy h2 {
+    .type-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-text);
+      background: var(--accent-light);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .project-body h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .project-body p {
+      color: var(--ink-2);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    /* ──────── CONTACT & DISCORD ──────── */
+    .contact-card {
+      background: var(--paper-card);
+      border: 2px solid var(--line-strong);
+      border-radius: 20px;
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info h2 {
+      font-size: 2.2rem;
       margin-bottom: 14px;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      letter-spacing: -.04em;
-      line-height: 1.15;
-      font-weight: 900;
     }
 
-    .discord-copy p {
-      max-width: 580px;
-      margin-bottom: 0;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 1.02rem;
+    .contact-info p {
+      color: var(--ink-2);
+      font-size: 1.05rem;
+      line-height: 1.65;
     }
 
-    .discord-action {
-      justify-self: end;
+    .contact-actions {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      min-width: 220px;
     }
 
-    .discord-id {
-      color: #d9b9fa;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: .8rem;
+    .discord-tag-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
       text-align: center;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 8px 12px;
-      border-radius: 8px;
+      padding: 10px 14px;
+      background: var(--paper);
       border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink-2);
     }
 
-    /* Footer & Animations */
-    .footer {
-      padding: 32px 0 46px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: .86rem;
+    /* ──────── FOOTER & TOAST ──────── */
+    footer {
+      padding: 40px 0;
+      color: var(--ink-3);
+      font-size: 0.9rem;
     }
 
-    .footer-row {
+    .footer-wrap {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      align-items: center;
     }
 
-    .footer strong {
-      color: var(--lilac);
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity .65s ease, transform .65s cubic-bezier(.2, .7, .2, 1);
-    }
-
-    .reveal.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Toast Notification */
     .toast {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
-      padding: 12px 20px;
-      border-radius: 12px;
-      background: var(--surface-light);
-      border: 1px solid var(--purple);
-      color: #fff;
+      bottom: 28px;
+      right: 28px;
+      padding: 12px 22px;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
       font-weight: 700;
-      font-size: .88rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      z-index: 999;
-      transform: translateY(100px);
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transform: translateY(80px);
       opacity: 0;
-      transition: transform .3s ease, opacity .3s ease;
+      transition: transform .3s var(--ease), opacity .3s var(--ease);
+      pointer-events: none;
     }
 
     .toast.show {
@@ -772,242 +732,455 @@
       opacity: 1;
     }
 
-    @media (max-width: 780px) {
+    /* ──────── RESPONSIVE BREAKPOINTS ──────── */
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 120px;
+        gap: 36px;
+      }
+
+      .hero-art {
+        order: -1;
+      }
+
+      .about-grid,
+      .skills-grid,
+      .projects-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
       .nav-links {
         display: none;
       }
 
-      .hero {
-        grid-template-columns: 1fr;
-        min-height: auto;
-        padding-top: 42px;
-      }
-
-      .hero-art {
-        min-height: 380px;
-        order: -1;
-      }
-
-      .cover-frame {
-        inset: 0 3% 0 0;
-      }
-
-      .section-heading,
-      .about,
-      .discord-card {
-        grid-template-columns: 1fr;
-      }
-
-      .section-heading {
-        gap: 16px;
-      }
-
-      .projects {
-        grid-template-columns: 1fr;
-      }
-
-      .discord-card {
+      .contact-card {
         padding: 32px;
-      }
-
-      .discord-action {
-        justify-self: start;
-        width: 100%;
-      }
-
-      .badge {
-        right: 0;
-      }
-
-      section {
-        padding: 70px 0;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="shell nav">
-    <a class="brand" href="#inicio" aria-label="BanguelaDev, início">Banguela<span>Dev</span></a>
-    <nav class="nav-links" aria-label="Navegação principal">
-      <a href="#sobre">Sobre</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#discord">Contato</a>
-      <a class="nav-cta" href="#discord">Vamos conversar</a>
-    </nav>
+
+  <!-- Subtle Noise Grain Filter -->
+  <div class="grain"></div>
+
+  <!-- Header / Navigation -->
+  <header class="site-head">
+    <div class="shell head-wrap">
+      <a class="brand" href="#hero">
+        <div class="brand-mark">B</div>
+        Banguela<span>Dev</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="nav-controls">
+        <!-- Visible Language Switcher Button (English default) -->
+        <div class="lang-switcher" aria-label="Language Selector">
+          <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
+          <button class="lang-btn" id="lang-pt" onclick="setLanguage('pt')">PT</button>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle Theme">
+          <svg class="icon-moon" viewBox="0 0 24 24">
+            <path d="M12.3 22A10 10 0 0 1 12 2a9.5 9.5 0 0 0 8.3 14c-.9 3.4-4 6-8 6z" />
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24">
+            <path
+              d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V3a1 1 0 0 1 1-1zm0 16a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1zm10-7a1 1 0 0 1-1 1h-2a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1zM5 12a1 1 0 0 1-1 1H2a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1zm14.07-6.07a1 1 0 0 1 0 1.41l-1.41 1.42a1 1 0 1 1-1.42-1.42l1.42-1.41a1 1 0 0 1 1.41 0zM7.76 17.66a1 1 0 0 1 0 1.41L6.34 20.5a1 1 0 0 1-1.41-1.42l1.41-1.41a1 1 0 0 1 1.42 0zM19.07 19.07a1 1 0 0 1-1.41 0l-1.42-1.41a1 1 0 1 1 1.42-1.42l1.41 1.42a1 1 0 0 1 0 1.41zM7.76 6.34a1 1 0 0 1-1.41 0L4.93 4.93a1 1 0 1 1 1.42-1.42l1.41 1.41a1 1 0 0 1 0 1.42z" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </header>
 
   <main>
-    <section id="inicio" class="shell hero">
-      <div class="reveal">
-        <div class="eyebrow">Engenharia de Software & Game Dev</div>
-        <h1>Sistemas Complexos <strong>& Automações.</strong></h1>
-        <p class="intro">Desenvolvo mecânicas imersivas em LuaU, arquitetura escalável de dados e ferramentas de alta
-          performance.</p>
+    <!-- Hero Section -->
+    <section id="hero" class="shell hero">
+      <div>
+        <div></div>
+        <h1 data-i18n-html="hero.headline">From simple scripts to <strong>full-scale systems.</strong></h1>
+        <p class="hero-intro" data-i18n="hero.intro">
+          Hi, I'm BanguelaDev. I build Roblox mechanics in LuaU, custom web apps, API automations, and game tools.
+          Whether you need a quick script or a complete platform, I keep code clean, fast, and objective.
+        </p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="#discord">Falar comigo</a>
+          <a class="btn btn-primary" href="#projects" data-i18n="hero.viewProjects">View Projects ↓</a>
+          <a class="btn btn-secondary" href="#contact" data-i18n="hero.contactMe">Let's Talk</a>
         </div>
       </div>
-      <div class="hero-art reveal">
-        <div class="cover-frame">
-          <img src="bangueladev-cover.png" alt="Banguela Avatar">
-          <div class="image-label">
-            <b>Banguela</b>
-            <span>Systems Developer</span>
+
+      <div class="hero-art">
+        <div class="cover-card">
+          <img src="bangueladev-cover.png" alt="BanguelaDev Avatar">
+          <div class="cover-caption">
+            <div>
+              <b>Banguela</b>
+              <div style="font-size:0.85rem; opacity:0.8;" data-i18n="hero.role">Game & Systems Developer</div>
+            </div>
+            <span>LuaU / Full-Stack</span>
           </div>
         </div>
-        <div class="badge"><i></i> Disponível para projetos</div>
       </div>
     </section>
 
-    <section id="sobre" class="shell reveal">
-      <div class="section-heading">
-        <div>
-          <div class="eyebrow">Especialidades</div>
-          <h2>Construo a lógica por trás de grandes experiências.</h2>
-        </div>
-        <p>Desenvolvimento focado em performance, código limpo e arquitetura modular de alta eficiência.</p>
+    <!-- About Section -->
+    <section id="about" class="shell">
+      <div class="sec-head">
+        <span class="sec-eyebrow" data-i18n="about.eyebrow">Approach</span>
+        <h2 class="sec-title" data-i18n="about.title">Simple utilities, complex mechanics, and everything in between.
+        </h2>
       </div>
-      <div class="about">
-        <article class="about-card">
-          <h3>Desenvolvimento de Alto Nível</h3>
-          <p>Meu objetivo é transformar conceitos complexos em sistemas robustos e intuitivos. Seja programando
-            mecânicas avançadas de física e gameplay ou construindo automações integradas com APIs externas, priorizo a
-            estabilidade e a excelência técnica.</p>
-        </article>
-        <div id="skills" class="skills"></div>
+      <div class="about-grid">
+        <div class="cv-card">
+          <h3>Direct & Practical Engineering</h3>
+          <p data-i18n="about.desc1">
+            I don't overcomplicate things with empty buzzwords. I write clean, performant code that solves real
+            problems—whether that's fixing a quick UI bug, building a Discord bot, or programming full combat physics
+            and Datastores.
+          </p>
+          <p data-i18n="about.desc2">
+            Years of scripting and systems building means I can jump straight into existing projects or architect fresh
+            features from scratch.
+          </p>
+        </div>
+        <div class="cv-card" style="background: var(--paper); border-style: dashed;">
+          <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--accent);">// Core Stack
+          </h3>
+          <ul
+            style="list-style: none; display: grid; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--ink-2);">
+            <li>⚡ <strong>LuaU / Roblox Studio</strong> (OOP, Client/Server, Physics, UI)</li>
+            <li>🌐 <strong>Web Stack</strong> (HTML5, Vanilla CSS, JS, REST APIs)</li>
+            <li>🤖 <strong>Automations</strong> (Discord.js, Python, Webhooks, Bots)</li>
+            <li>💾 <strong>Databases & Storage</strong> (DataStore Service, Anti-dupe, JSON)</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section id="projetos" class="shell reveal">
-      <div class="section-heading">
-        <div>
-          <div class="eyebrow">Portfólio</div>
-          <h2>Projetos Selecionados.</h2>
-        </div>
-        <p>Demonstrações em vídeo dos sistemas e ferramentas desenvolvidas.</p>
+    <!-- Skills Section -->
+    <section id="skills" class="shell">
+      <div class="sec-head">
+        <span class="sec-eyebrow" data-i18n="skills.eyebrow">Skills & Capabilities</span>
+        <h2 class="sec-title" data-i18n="skills.title">What I bring to the table.</h2>
+        <p class="sec-subtitle" data-i18n="skills.subtitle">Pragmatic development across game systems, tools, and web
+          backends.</p>
       </div>
-      <div id="projects" class="projects"></div>
+      <div id="skills-container" class="skills-grid"></div>
     </section>
 
-    <section id="discord" class="shell reveal">
-      <div class="discord-card">
-        <div class="discord-copy">
-          <div class="eyebrow">Contato</div>
-          <h2>Vamos trabalhar juntos.</h2>
-          <p>Acompanhe novidades, solicite orçamentos para o seu projeto ou troque uma ideia sobre desenvolvimento.</p>
+    <!-- Projects Section -->
+    <section id="projects" class="shell">
+      <div class="sec-head">
+        <span class="sec-eyebrow" data-i18n="projects.eyebrow">Selected Work</span>
+        <h2 class="sec-title" data-i18n="projects.title">Projects & Demos</h2>
+        <p class="sec-subtitle" data-i18n="projects.subtitle">Video demonstrations of functional systems and tools I've
+          built.</p>
+      </div>
+      <div id="projects-container" class="projects-grid"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="shell" style="border-bottom: none;">
+      <div class="contact-card">
+        <div class="contact-info">
+          <span class="sec-eyebrow" data-i18n="contact.eyebrow">Contact</span>
+          <h2 data-i18n="contact.title">Have a project in mind?</h2>
+          <p data-i18n="contact.desc">Need a script written, a system debugged, or a full game feature built? Send me a
+            message on Discord or join the community server.</p>
         </div>
-        <div class="discord-action" id="discord-actions"></div>
+        <div class="contact-actions" id="contact-actions"></div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="shell footer-row">
-      <span>© <span id="year"></span> <strong>BanguelaDev</strong>. Todos os direitos reservados.</span>
+  <!-- Footer -->
+  <footer>
+    <div class="shell footer-wrap">
+      <span>© <span id="year"></span> <strong>BanguelaDev</strong>. <span data-i18n="footer.rights">All rights
+          reserved.</span></span>
+      <div class="lang-switcher" style="padding: 2px;">
+        <button class="lang-btn active" id="footer-lang-en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" id="footer-lang-pt" onclick="setLanguage('pt')">PT</button>
+      </div>
     </div>
   </footer>
 
-  <div id="toast" class="toast">Tag copiada com sucesso!</div>
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">Tag copied to clipboard!</div>
 
   <script>
-    const portfolioConfig = {
-      discord: {
-        username: "bangueladev",
-        userId: "239123000438292481",
-        inviteUrl: "https://discord.gg/FNrawp7AeP"
-      },
-      skills: [
-        { title: "Game Systems", description: "Criação de mecânicas de gameplay, física e otimização de recursos.", mark: "RBX" },
-        { title: "LuaU Scripting", description: "Código limpo, orientação a objetos, módulos estruturados e alto desempenho.", mark: "LU" },
-        { title: "Automações & APIs", description: "Bots inteligentes, moderação, economia virtual e integrações Web API.", mark: "BOT" },
-        { title: "Arquitetura DataStore", description: "Sistemas de salvamento seguro, prevenção de falhas e dados escaláveis.", mark: "SYS" }
-      ],
-      projects: [
-        {
-          title: "Customização de Veículos",
-          type: "LuaU",
-          description: "Sistema de customização de veículos, com sistema de pintura, rodas, capô interno, etc.",
-          video: "videos/car.mp4",
-          link: ""
+    // ──────── TRANSLATIONS DICTIONARY (EN default / PT toggle) ────────
+    const translations = {
+      en: {
+        nav: {
+          about: "About",
+          skills: "Skills",
+          projects: "Projects",
+          contact: "Contact"
         },
-        {
-          title: "Sistema de Armas + Suporte Mobile",
-          type: "LuaU",
-          description: "Sistema de armas com mira, suporte mobile, sistema de primeira pessoa, etc.",
-          video: "videos/guns.mp4",
-          link: ""
+        hero: {
+          role: "Game & Systems Developer",
+          headline: "From simple scripts to <strong>full-scale systems.</strong>",
+          intro: "Hi, I'm BanguelaDev. I build Roblox mechanics in LuaU, custom web apps, API automations, and game tools. Whether you need a quick script or a complete platform, I keep code clean, fast, and objective.",
+          viewProjects: "View Projects ↓",
+          contactMe: "Let's Talk"
         },
-        {
-          title: "Tabela Global",
-          type: "LuaU",
-          description: "Sistema de tabela global universal, com sistema de doações, etc.",
-          video: "videos/topdonates.mp4",
-          link: ""
+        about: {
+          eyebrow: "Approach",
+          title: "Simple utilities, complex mechanics, and everything in between.",
+          desc1: "I don't overcomplicate things with empty buzzwords. I write clean, performant code that solves real problems—whether that's fixing a quick UI bug, building a Discord bot, or programming full combat physics and Datastores.",
+          desc2: "Years of scripting and systems building means I can jump straight into existing projects or architect fresh features from scratch."
         },
-        {
-          title: "IAs Inteligentes",
-          type: "LuaU",
-          description: "Sistema de inteligência artificial para robôs, com sistema de visão, detecção de movimento, etc.",
-          video: "videos/creeper.mp4",
-          link: ""
+        skills: {
+          eyebrow: "Skills & Capabilities",
+          title: "What I bring to the table.",
+          subtitle: "Pragmatic development across game systems, tools, and web backends.",
+          items: [
+            { title: "LuaU & Game Systems", description: "Combat mechanics, movement, physics, vehicle customization, and client-server sync.", mark: "RBX" },
+            { title: "Web & API Development", description: "Custom web applications, REST APIs, JSON endpoints, and dynamic responsive UIs.", mark: "WEB" },
+            { title: "Bots & Automations", description: "Discord bots, moderation tools, virtual economy systems, and automated webhooks.", mark: "BOT" },
+            { title: "DataStores & Systems", description: "Secure state management, save systems, anti-dupe safeguards, and structured data.", mark: "SYS" }
+          ]
+        },
+        projects: {
+          eyebrow: "Selected Work",
+          title: "Projects & Demos",
+          subtitle: "Video demonstrations of functional systems and tools I've built.",
+          openLink: "Open project ↗",
+          items: [
+            {
+              title: "Vehicle Customization System",
+              type: "LuaU / Roblox",
+              description: "Full vehicle tuning setup including custom paint jobs, wheels, interior hood inspection, and performance handling physics.",
+              video: "videos/car.mp4",
+              link: ""
+            },
+            {
+              title: "FPS Weapon System + Mobile Support",
+              type: "LuaU / Mobile",
+              description: "First-person gun system featuring ADS aiming, recoil, reload animations, and intuitive touchscreen controls for mobile.",
+              video: "videos/guns.mp4",
+              link: ""
+            },
+            {
+              title: "Global Leaderboard & Donation System",
+              type: "LuaU / DataStores",
+              description: "Universal live top-donators board with live global sync, custom UI notifications, and player stat tracking.",
+              video: "videos/topdonates.mp4",
+              link: ""
+            },
+            {
+              title: "AI NPC Detection & Vision System",
+              type: "LuaU / AI",
+              description: "Pathfinding and field-of-view AI detection system for hostile NPCs with line-of-sight tracking and aggressive behaviors.",
+              video: "videos/creeper.mp4",
+              link: ""
+            }
+          ]
+        },
+        contact: {
+          eyebrow: "Contact",
+          title: "Have a project in mind?",
+          desc: "Need a script written, a system debugged, or a full game feature built? Send me a message on Discord or join the community server.",
+          joinServer: "Join Server ↗",
+          inviteSoon: "Invite coming soon",
+          copyTag: "Copy Discord Tag",
+          toastCopied: "Tag copied to clipboard!"
+        },
+        footer: {
+          rights: "All rights reserved."
         }
-      ]
+      },
+      pt: {
+        nav: {
+          about: "Sobre",
+          skills: "Habilidades",
+          projects: "Projetos",
+          contact: "Contato"
+        },
+        hero: {
+          role: "Desenvolvedor de Games & Sistemas",
+          headline: "De scripts básicos a <strong>sistemas completos.</strong>",
+          intro: "Olá, sou o BanguelaDev. Desenvolvo mecânicas em LuaU no Roblox, aplicações web, automações e APIs. Seja um script rápido ou uma plataforma inteira, meu foco é entregas diretas, código limpo e alto desempenho.",
+          viewProjects: "Ver Projetos ↓",
+          contactMe: "Falar comigo"
+        },
+        about: {
+          eyebrow: "Abordagem",
+          title: "Utilitários simples, mecânicas complexas e tudo no meio do caminho.",
+          desc1: "Sem palavras complicadas ou enrolação. Escrevo código limpo e performático focado em resolver problemas reais — desde ajustar uma UI até programar sistemas de física de combate ou arquitetura de salvamento de dados.",
+          desc2: "Com anos de experiência em lógica e desenvolvimento de sistemas, trabalho tanto no aprimoramento de códigos existentes quanto na criação de projetos do zero."
+        },
+        skills: {
+          eyebrow: "Habilidades",
+          title: "O que eu desenvolvo.",
+          subtitle: "Desenvolvimento prático abrangendo games, ferramentas e sistemas web.",
+          items: [
+            { title: "LuaU & Game Systems", description: "Mecânicas de combate, movimentação, física, veículos e sincronização cliente-servidor.", mark: "RBX" },
+            { title: "Desenvolvimento Web & APIs", description: "Aplicações web sob medida, APIs REST, consumo de endpoints JSON e interfaces responsivas.", mark: "WEB" },
+            { title: "Automações & Bots", description: "Bots para Discord, ferramentas de moderação, economia virtual e webhooks automatizados.", mark: "BOT" },
+            { title: "DataStores & Sistemas", description: "Gerenciamento seguro de dados, salvamento, prevenção de bugs e estruturação de dados.", mark: "SYS" }
+          ]
+        },
+        projects: {
+          eyebrow: "Trabalhos Selecionados",
+          title: "Projetos em Vídeo",
+          subtitle: "Demonstrações práticas de sistemas e ferramentas desenvolvidas.",
+          openLink: "Abrir projeto ↗",
+          items: [
+            {
+              title: "Customização de Veículos",
+              type: "LuaU / Roblox",
+              description: "Sistema completo de tuning com pintura, troca de rodas, visualização de motor e física de pilotagem.",
+              video: "videos/car.mp4",
+              link: ""
+            },
+            {
+              title: "Sistema de Armas FPS + Mobile",
+              type: "LuaU / Mobile",
+              description: "Mecânica de tiro em primeira pessoa com mira, recuo, recarga e suporte fluido para telas sensíveis ao toque.",
+              video: "videos/guns.mp4",
+              link: ""
+            },
+            {
+              title: "Tabela Global & Doações",
+              type: "LuaU / DataStores",
+              description: "Ranking global de doações em tempo real com sincronização entre servidores e interface intuitiva.",
+              video: "videos/topdonates.mp4",
+              link: ""
+            },
+            {
+              title: "IA de Visão & Detecção para NPCs",
+              type: "LuaU / IA",
+              description: "Inteligência artificial para robôs e inimigos com campo de visão, detecção de movimento e perseguição.",
+              video: "videos/creeper.mp4",
+              link: ""
+            }
+          ]
+        },
+        contact: {
+          eyebrow: "Contato",
+          title: "Quer tirar um projeto do papel?",
+          desc: "Precisa de um script, correção de bugs ou uma funcionalidade inteira para o seu jogo? Entre em contato no Discord.",
+          joinServer: "Entrar no Servidor ↗",
+          inviteSoon: "Convite em breve",
+          copyTag: "Copiar Tag do Discord",
+          toastCopied: "Tag copiada para a área de transferência!"
+        },
+        footer: {
+          rights: "Todos os direitos reservados."
+        }
+      }
     };
 
-    const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
-    const isSafeUrl = (value) => /^https?:\/\//i.test(value || "");
+    const discordConfig = {
+      username: "bangueladev",
+      userId: "239123000438292481",
+      inviteUrl: "https://discord.gg/FNrawp7AeP"
+    };
+
+    let currentLang = 'en';
+
+    function setLanguage(lang) {
+      if (!translations[lang]) return;
+      currentLang = lang;
+
+      // Update active state on language buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll(`#lang-${lang}, #footer-lang-${lang}`).forEach(btn => btn.classList.add('active'));
+
+      // Update HTML lang attribute
+      document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+      const t = translations[lang];
+
+      // Update simple text elements
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const path = el.getAttribute('data-i18n').split('.');
+        let val = t;
+        path.forEach(key => { if (val) val = val[key]; });
+        if (typeof val === 'string') el.textContent = val;
+      });
+
+      // Update HTML content elements
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const path = el.getAttribute('data-i18n-html').split('.');
+        let val = t;
+        path.forEach(key => { if (val) val = val[key]; });
+        if (typeof val === 'string') el.innerHTML = val;
+      });
+
+      renderSkills(t.skills.items);
+      renderProjects(t.projects.items);
+      renderContact(t.contact);
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+    }
 
     function showToast(text) {
-      const toast = document.getElementById("toast");
+      const toast = document.getElementById('toast');
       toast.textContent = text;
-      toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 2500);
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
     }
 
-    function renderSkills() {
-      document.getElementById("skills").innerHTML = portfolioConfig.skills.map((skill) => `
-        <article class="skill-card" data-mark="${escapeHtml(skill.mark)}">
-          <b>${escapeHtml(skill.title)}</b>
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+    }
+
+    function renderSkills(items) {
+      document.getElementById('skills-container').innerHTML = items.map(skill => `
+        <div class="skill-box">
+          <span class="skill-tag">${escapeHtml(skill.mark)}</span>
+          <h4>${escapeHtml(skill.title)}</h4>
           <p>${escapeHtml(skill.description)}</p>
-        </article>
-      `).join("");
+        </div>
+      `).join('');
     }
 
-    function renderProjects() {
-      document.getElementById("projects").innerHTML = portfolioConfig.projects.map((project, index) => {
-        const link = isSafeUrl(project.link) ? `<a class="tag" href="${escapeHtml(project.link)}" target="_blank" rel="noopener">Abrir projeto ↗</a>` : "";
+    function renderProjects(items) {
+      const t = translations[currentLang].projects;
 
-        let mediaHtml = '<div class="media-placeholder" aria-hidden="true">▶</div>';
-        if (project.video) {
-          mediaHtml = `
-            <video id="proj-video-${index}" autoplay loop muted playsinline preload="auto">
-              <source src="${escapeHtml(project.video)}" type="video/mp4">
-              Seu navegador não suporta vídeos MP4.
-            </video>
-            <div class="video-overlay-controls">
-              <button class="video-btn play-pause-btn" data-index="${index}" title="Play/Pause">
-                <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
-              </button>
-              <button class="video-btn mute-btn" data-index="${index}" title="Mudar Som">
-                <svg class="icon-muted" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
-                <svg class="icon-unmuted" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-              </button>
-            </div>
-            <div class="video-progress-container" data-index="${index}">
-              <div class="video-progress-bar" id="proj-progress-${index}"></div>
-            </div>
-          `;
-        }
+      document.getElementById('projects-container').innerHTML = items.map((project, index) => {
+        const link = project.link ? `<a class="type-badge" href="${escapeHtml(project.link)}" target="_blank" rel="noopener">${t.openLink}</a>` : '';
 
         return `
           <article class="project-card">
-            <div class="project-media" id="media-container-${index}">${mediaHtml}</div>
-            <div class="project-content">
+            <div class="project-media" id="media-${index}">
+              <video id="proj-video-${index}" autoplay loop muted playsinline preload="auto">
+                <source src="${escapeHtml(project.video)}" type="video/mp4">
+              </video>
+              <div class="video-overlay-controls">
+                <button class="video-btn play-pause-btn" data-index="${index}" title="Play/Pause">
+                  <svg class="icon-pause" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                  <svg class="icon-play" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display:none;"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+                <button class="video-btn mute-btn" data-index="${index}" title="Mute/Unmute">
+                  <svg class="icon-muted" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+                  <svg class="icon-unmuted" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display:none;"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                </button>
+              </div>
+              <div class="video-progress-container" data-index="${index}">
+                <div class="video-progress-bar" id="proj-progress-${index}"></div>
+              </div>
+            </div>
+            <div class="project-body">
               <div class="project-meta">
-                <span class="tag">${escapeHtml(project.type)}</span>
+                <span class="type-badge">${escapeHtml(project.type)}</span>
                 ${link}
               </div>
               <h3>${escapeHtml(project.title)}</h3>
@@ -1015,11 +1188,10 @@
             </div>
           </article>
         `;
-      }).join("");
+      }).join('');
 
-      // Setup custom video progress and controls logic
-      portfolioConfig.projects.forEach((project, index) => {
-        if (!project.video) return;
+      // Attach video control event listeners
+      items.forEach((project, index) => {
         const video = document.getElementById(`proj-video-${index}`);
         const progressBar = document.getElementById(`proj-progress-${index}`);
         const progressContainer = document.querySelector(`.video-progress-container[data-index="${index}"]`);
@@ -1028,29 +1200,22 @@
 
         if (!video) return;
 
-        // Force play automatically
-        video.play().catch(() => {
-          console.log("Autoplay waiting for interaction");
-        });
+        video.play().catch(() => { });
 
-        // Update progress bar on timeupdate
-        video.addEventListener("timeupdate", () => {
-          if (video.duration) {
-            const pct = (video.currentTime / video.duration) * 100;
-            progressBar.style.width = pct + "%";
+        video.addEventListener('timeupdate', () => {
+          if (video.duration && progressBar) {
+            progressBar.style.width = ((video.currentTime / video.duration) * 100) + '%';
           }
         });
 
-        // Seek on progress container click
         if (progressContainer) {
-          progressContainer.addEventListener("click", (e) => {
+          progressContainer.addEventListener('click', (e) => {
             const rect = progressContainer.getBoundingClientRect();
             const pos = (e.clientX - rect.left) / rect.width;
             video.currentTime = pos * video.duration;
           });
         }
 
-        // Toggle play/pause
         const togglePlay = (e) => {
           if (e) e.stopPropagation();
           if (video.paused) {
@@ -1068,64 +1233,46 @@
           }
         };
 
-        if (playBtn) playBtn.addEventListener("click", togglePlay);
-        video.addEventListener("click", togglePlay);
+        if (playBtn) playBtn.addEventListener('click', togglePlay);
+        video.addEventListener('click', togglePlay);
 
-        // Toggle Mute
         if (muteBtn) {
-          muteBtn.addEventListener("click", (e) => {
+          muteBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             video.muted = !video.muted;
-            if (video.muted) {
-              muteBtn.querySelector('.icon-muted').style.display = 'block';
-              muteBtn.querySelector('.icon-unmuted').style.display = 'none';
-            } else {
-              muteBtn.querySelector('.icon-muted').style.display = 'none';
-              muteBtn.querySelector('.icon-unmuted').style.display = 'block';
-            }
+            muteBtn.querySelector('.icon-muted').style.display = video.muted ? 'block' : 'none';
+            muteBtn.querySelector('.icon-unmuted').style.display = video.muted ? 'none' : 'block';
           });
         }
       });
     }
 
-    function renderDiscord() {
-      const { username, userId, inviteUrl } = portfolioConfig.discord;
-      const action = isSafeUrl(inviteUrl)
-        ? `<a class="button button-primary" href="${escapeHtml(inviteUrl)}" target="_blank" rel="noopener">Entrar no Servidor ↗</a>`
-        : `<button class="button button-primary server-disabled" type="button">Convite em breve</button>`;
+    function renderContact(contactData) {
+      const { inviteUrl, username } = discordConfig;
+      const joinBtnHtml = inviteUrl
+        ? `<a class="btn btn-primary" href="${escapeHtml(inviteUrl)}" target="_blank" rel="noopener">${contactData.joinServer}</a>`
+        : `<button class="btn btn-primary" disabled>${contactData.inviteSoon}</button>`;
 
-      const copyBtn = `<button class="button button-secondary" type="button" onclick="copyDiscordId()">Copiar Tag</button>`;
-      const idTag = `<div class="discord-id">@${escapeHtml(username)}</div>`;
-
-      document.getElementById("discord-actions").innerHTML = `${action}${copyBtn}${idTag}`;
+      document.getElementById('contact-actions').innerHTML = `
+        ${joinBtnHtml}
+        <button class="btn btn-secondary" onclick="copyDiscordId()">${contactData.copyTag}</button>
+        <div class="discord-tag-box">@${escapeHtml(username)}</div>
+      `;
     }
 
     function copyDiscordId() {
-      const tag = `@${portfolioConfig.discord.username}`;
+      const tag = `@${discordConfig.username}`;
+      const toastText = translations[currentLang].contact.toastCopied;
       navigator.clipboard.writeText(tag).then(() => {
-        showToast(`Tag "${tag}" copiada!`);
+        showToast(toastText);
       }).catch(() => {
-        showToast(`Tag: ${tag}`);
+        showToast(tag);
       });
     }
 
-    function setupReveal() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: .12 });
-      document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
-    }
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-    renderSkills();
-    renderProjects();
-    renderDiscord();
-    setupReveal();
+    // Initialize
+    document.getElementById('year').textContent = new Date().getFullYear();
+    setLanguage('en');
   </script>
 </body>
 
