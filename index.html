@@ -3,103 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portfólio em vídeo de UN6107617.">
-  <meta name="theme-color" content="#08030f">
-  <title>UN6107617 | Portfólio de Vídeos</title>
+  <meta name="description" content="BanguelaDev — desenvolvedor Roblox Studio e bots para Discord.">
+  <meta name="theme-color" content="#09060f">
+  <title>BanguelaDev | Desenvolvedor</title>
   <style>
-    :root { --ink: #08030f; --panel: #150a23; --purple: #a855f7; --violet: #6d28d9; --mist: #f5edff; --muted: #c4b5d8; }
+    :root { --bg: #09060f; --surface: #120b1e; --surface-light: #1d1230; --line: #ffffff18; --text: #fbf8ff; --muted: #bdb2cb; --purple: #b566ff; --lilac: #e1c5ff; --gold: #f5b56c; --max: 1160px; }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { margin: 0; min-width: 320px; color: var(--mist); background: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    body::before { content: ""; position: fixed; inset: 0; z-index: -2; background: radial-gradient(circle at 74% 8%, #58208a66 0 1%, transparent 32%), radial-gradient(circle at 15% 90%, #37105f77 0, transparent 30%), #08030f; }
-    body::after { content: ""; position: fixed; inset: 0; z-index: -1; opacity: .32; pointer-events: none; background-image: linear-gradient(#ffffff08 1px, transparent 1px), linear-gradient(90deg, #ffffff08 1px, transparent 1px); background-size: 44px 44px; mask-image: linear-gradient(to bottom, black, transparent 82%); }
+    body { margin: 0; min-width: 320px; color: var(--text); background: var(--bg); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; overflow-x: hidden; }
+    body::before { content: ""; position: fixed; z-index: -2; inset: 0; background: radial-gradient(circle at 80% 6%, #6d289452, transparent 30%), radial-gradient(circle at 6% 48%, #35176352, transparent 28%), var(--bg); }
+    body::after { content: ""; position: fixed; z-index: -1; inset: 0; pointer-events: none; opacity: .3; background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(#000, transparent 70%); }
     a { color: inherit; text-decoration: none; }
-    .shell { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; }
-    .brand { font-weight: 900; letter-spacing: -.06em; font-size: 1.25rem; }
+    button { font: inherit; }
+    .shell { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 82px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: -.06em; font-size: 1.25rem; }
+    .brand-mark { display: grid; place-items: center; width: 31px; height: 31px; border: 1px solid #dabbff88; border-radius: 10px 10px 4px; color: var(--lilac); background: #a557ff1c; transform: rotate(-8deg); }
     .brand span { color: var(--purple); }
-    .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: .88rem; font-weight: 700; }
-    .nav-links a:hover { color: white; }
-    .hero { min-height: 480px; display: grid; align-items: center; grid-template-columns: 1.15fr .85fr; gap: 48px; padding: 68px 0 88px; }
-    .eyebrow { display: flex; align-items: center; gap: 9px; color: #d8b4fe; font-size: .75rem; font-weight: 800; text-transform: uppercase; letter-spacing: .18em; }
-    .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--purple); }
-    h1 { max-width: 730px; margin: 15px 0 20px; font-size: clamp(3.15rem, 8vw, 6.7rem); line-height: .88; letter-spacing: -.075em; }
-    h1 em { color: #d8b4fe; font-style: normal; text-shadow: 0 0 36px #a855f755; }
-    .intro { max-width: 590px; margin: 0; color: var(--muted); font-size: clamp(1rem, 2vw, 1.14rem); line-height: 1.75; }
-    .button { display: inline-flex; align-items: center; gap: 10px; margin-top: 29px; padding: 14px 20px; border: 1px solid #d8b4fe66; border-radius: 999px; color: white; background: linear-gradient(120deg, #7e22ce, #4c1d95); font-weight: 800; box-shadow: 0 12px 35px #7e22ce40; transition: transform .2s, box-shadow .2s; }
-    .button:hover { transform: translateY(-2px); box-shadow: 0 18px 40px #7e22ce66; }
-    .dragon-orb { position: relative; width: min(100%, 355px); aspect-ratio: 1; justify-self: end; overflow: hidden; border: 1px solid #d8b4fe44; border-radius: 50%; background: radial-gradient(circle at 37% 28%, #b05cff 0 2%, #4c176f 23%, #180727 54%, #07030c 71%); box-shadow: inset 0 0 60px #000, 0 0 90px #6d28d966; }
-    .dragon-orb::before { content: ""; position: absolute; inset: 10%; border: 1px solid #f3e8ff44; border-radius: 50%; }
-    .dragon-orb::after { content: ""; position: absolute; width: 170%; height: 37%; left: -30%; top: 42%; border-radius: 50%; border-top: 16px solid #050207; transform: rotate(-18deg); box-shadow: 0 -5px 12px #a855f744; }
-    .orb-eye { position: absolute; top: 33%; left: 54%; width: 21px; height: 11px; border-radius: 80% 15%; background: #d8b4fe; transform: rotate(-15deg); box-shadow: 0 0 18px #e9d5ff; }
-    .orb-eye::after { content: ""; position: absolute; inset: 2px 7px; background: #190622; border-radius: 50%; }
-    section { padding: 20px 0 80px; }
-    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 22px; margin-bottom: 27px; }
-    .section-heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.06em; }
-    .section-heading p { max-width: 310px; margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.55; }
-    .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-    .video-card { overflow: hidden; border: 1px solid #d8b4fe24; border-radius: 20px; background: linear-gradient(145deg, #1d0d2bcc, #0d0615e6); box-shadow: 0 16px 45px #00000038; transition: border-color .2s, transform .2s; }
-    .video-card:hover { transform: translateY(-4px); border-color: #d8b4fe88; }
-    .video-wrap { position: relative; aspect-ratio: 16 / 9; background: #030105; }
-    video { display: block; width: 100%; height: 100%; object-fit: cover; }
-    .video-fallback { display: grid; place-items: center; width: 100%; height: 100%; color: #d8b4fe; text-align: center; padding: 20px; background: radial-gradient(circle at 50% 20%, #6d28d966, transparent 45%), #08030f; }
-    .card-content { padding: 20px; }
-    .tag { color: #e9d5ff; font-size: .7rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
-    h3 { margin: 8px 0 8px; font-size: 1.32rem; letter-spacing: -.035em; }
-    .card-content p { margin: 0; color: var(--muted); line-height: 1.6; font-size: .92rem; }
-    .footer { border-top: 1px solid #d8b4fe1f; padding: 30px 0 42px; color: #9f8cb3; font-size: .83rem; }
-    @media (max-width: 720px) { .nav-links { gap: 14px; font-size: .76rem; } .hero { grid-template-columns: 1fr; padding-top: 45px; gap: 38px; } .dragon-orb { justify-self: start; width: 230px; grid-row: 1; } .section-heading { align-items: start; flex-direction: column; } .video-grid { grid-template-columns: 1fr; } }
+    .nav-links { display: flex; align-items: center; gap: 25px; color: var(--muted); font-size: .86rem; font-weight: 750; }
+    .nav-links a { transition: color .2s ease; }.nav-links a:hover { color: #fff; }
+    .nav-cta { padding: 10px 15px; border: 1px solid #c981ff77; border-radius: 999px; color: #fff !important; background: #9e48e117; }
+    .hero { position: relative; display: grid; grid-template-columns: 1.02fr .98fr; min-height: 650px; align-items: center; gap: 42px; padding: 66px 0 78px; }
+    .eyebrow { display: flex; align-items: center; gap: 9px; margin-bottom: 16px; color: var(--lilac); font-size: .72rem; font-weight: 850; letter-spacing: .17em; text-transform: uppercase; }.eyebrow::before { content: ""; width: 25px; height: 1px; background: var(--purple); }
+    h1, h2, h3, p { margin-top: 0; } h1 { max-width: 690px; margin-bottom: 23px; font-size: clamp(3.2rem, 7vw, 6.5rem); line-height: .91; letter-spacing: -.075em; } h1 strong { color: var(--lilac); font-weight: inherit; } h1 em { color: var(--purple); font-style: normal; }
+    .intro { max-width: 580px; color: var(--muted); font-size: 1.08rem; line-height: 1.7; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 31px; }.button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 0 19px; border: 1px solid transparent; border-radius: 14px; font-weight: 850; font-size: .9rem; transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }.button:hover { transform: translateY(-3px); }.button-primary { color: #190b2a; background: linear-gradient(135deg, #d89aff, #a957ef); box-shadow: 0 14px 32px #7e36b843; }.button-secondary { border-color: var(--line); background: #fff0; }.button-secondary:hover { border-color: #d6a4ff8c; box-shadow: 0 12px 24px #0005; }
+    .hero-art { position: relative; min-height: 470px; isolation: isolate; }.hero-art::before { content: ""; position: absolute; inset: 10% 5% 4% 8%; z-index: -1; border-radius: 50%; background: radial-gradient(circle, #b562f63e, transparent 64%); filter: blur(12px); }.cover-frame { position: absolute; inset: 0 0 0 8%; overflow: hidden; border: 1px solid #e4c7ff45; border-radius: 32px; background: var(--surface); box-shadow: 18px 25px 60px #0008; transform: rotate(2deg); transition: transform .45s cubic-bezier(.2,.8,.2,1); }.hero-art:hover .cover-frame { transform: rotate(0) translateY(-5px); }.cover-frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, #09060fca 100%), linear-gradient(100deg, #400e711c, transparent 60%); }.cover-frame img { width: 100%; height: 100%; object-fit: cover; object-position: 53% 40%; filter: saturate(.76) contrast(1.06); }.image-label { position: absolute; z-index: 1; bottom: 25px; left: 31px; display: grid; gap: 4px; }.image-label b { font-size: 1.18rem; }.image-label span { color: #e2d1ef; font-size: .82rem; }.badge { position: absolute; z-index: 2; top: 20px; right: -12px; display: flex; align-items: center; gap: 8px; padding: 11px 14px; border: 1px solid #f3c08d61; border-radius: 14px; color: #fee5c7; background: #201323d9; box-shadow: 0 15px 30px #0007; font-size: .78rem; font-weight: 800; }.badge i { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 14px var(--gold); }
+    .quick-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: -1px; border: 1px solid var(--line); border-radius: 17px; overflow: hidden; background: var(--line); }.quick-stats div { padding: 18px; background: #0d0815df; }.quick-stats b { display: block; margin-bottom: 3px; color: var(--lilac); font-size: 1.04rem; }.quick-stats span { color: var(--muted); font-size: .76rem; }
+    section { padding: 112px 0; }.section-heading { display: grid; grid-template-columns: 1fr .8fr; align-items: end; gap: 38px; margin-bottom: 35px; }.section-heading h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4.4vw, 4.2rem); letter-spacing: -.065em; line-height: .94; }.section-heading > p { max-width: 440px; margin-bottom: 5px; color: var(--muted); line-height: 1.65; }
+    .about { display: grid; grid-template-columns: .78fr 1.22fr; gap: 28px; }.about-card, .skill-card, .project-card, .discord-card { border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, #1c102cbd, #0e0917ed); box-shadow: 0 18px 45px #0002; }.about-card { padding: 30px; }.about-card h3 { margin-bottom: 12px; font-size: 1.4rem; letter-spacing: -.04em; }.about-card p { margin-bottom: 0; color: var(--muted); line-height: 1.65; }.skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }.skill-card { position: relative; min-height: 148px; padding: 24px; overflow: hidden; transition: transform .25s, border-color .25s; }.skill-card:hover { transform: translateY(-5px); border-color: #ca8bff88; }.skill-card::after { content: attr(data-mark); position: absolute; right: -5px; bottom: -25px; color: #d99fff12; font-size: 7rem; font-weight: 900; letter-spacing: -.12em; }.skill-card b, .skill-card p { position: relative; z-index: 1; }.skill-card b { display: block; margin-bottom: 8px; font-size: 1.1rem; }.skill-card p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 19px; }.project-card { overflow: hidden; transition: transform .3s ease, border-color .3s ease; }.project-card:hover { transform: translateY(-6px); border-color: #c88bff88; }.project-media { position: relative; aspect-ratio: 16 / 8; display: grid; place-items: center; overflow: hidden; background: radial-gradient(circle at 35% 30%, #8c3fbe75, transparent 35%), linear-gradient(135deg, #2a1645, #0d0816); }.project-media video { width: 100%; height: 100%; object-fit: cover; }.project-media .media-placeholder { display: grid; place-items: center; width: 62px; height: 62px; border: 1px solid #edd5ff8f; border-radius: 50%; color: var(--lilac); background: #110a20a6; font-size: 1.45rem; box-shadow: 0 0 0 11px #b25dff18; }.project-content { padding: 25px; }.project-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 13px; }.tag { padding: 5px 8px; border: 1px solid #c88cff3d; border-radius: 999px; color: #debcff; background: #b65cff12; font-size: .69rem; font-weight: 800; }.project-content h3 { margin-bottom: 9px; font-size: 1.4rem; letter-spacing: -.04em; }.project-content p { margin-bottom: 0; color: var(--muted); line-height: 1.6; font-size: .92rem; }
+    .discord-card { position: relative; display: grid; grid-template-columns: 1.3fr .7fr; gap: 30px; align-items: center; padding: 38px; overflow: hidden; }.discord-card::before { content: ""; position: absolute; width: 390px; height: 390px; right: -110px; top: -180px; border: 1px solid #ba75ff2b; border-radius: 50%; box-shadow: 0 0 0 35px #ba75ff0c, 0 0 0 70px #ba75ff08; }.discord-copy, .discord-action { position: relative; z-index: 1; }.discord-copy .eyebrow { margin-bottom: 10px; }.discord-copy h2 { margin-bottom: 12px; font-size: clamp(2rem, 4vw, 3.6rem); letter-spacing: -.06em; line-height: .95; }.discord-copy p { max-width: 580px; margin-bottom: 0; color: var(--muted); line-height: 1.65; }.discord-action { justify-self: end; display: grid; gap: 12px; min-width: 208px; }.discord-id { color: #d9b9fa; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .73rem; text-align: center; }.server-disabled { cursor: not-allowed; opacity: .65; }.server-disabled:hover { transform: none; }
+    .footer { padding: 30px 0 42px; border-top: 1px solid var(--line); color: var(--muted); font-size: .84rem; }.footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }.footer strong { color: var(--lilac); }.reveal { opacity: 0; transform: translateY(26px); transition: opacity .65s ease, transform .65s cubic-bezier(.2,.7,.2,1); }.reveal.in-view { opacity: 1; transform: translateY(0); }
+    @media (max-width: 780px) { .nav-links { display: none; }.hero { grid-template-columns: 1fr; min-height: auto; padding-top: 42px; }.hero-art { min-height: 390px; order: -1; }.cover-frame { inset: 0 3% 0 0; }.quick-stats { margin-top: 22px; }.section-heading, .about, .discord-card { grid-template-columns: 1fr; }.section-heading { gap: 13px; }.section-heading > p { margin-bottom: 0; }.projects { grid-template-columns: 1fr; }.discord-card { padding: 29px; }.discord-action { justify-self: start; }.badge { right: 0; } section { padding: 76px 0; } }
+    @media (max-width: 480px) { .shell { width: min(100% - 28px, var(--max)); }.hero-art { min-height: 335px; }.skills { grid-template-columns: 1fr; }.quick-stats div { padding: 13px; }.quick-stats span { font-size: .68rem; } h1 { font-size: 3.25rem; }.image-label { left: 21px; bottom: 20px; }.badge { font-size: .68rem; }.footer-row { align-items: flex-start; flex-direction: column; } }
   </style>
 </head>
 <body>
   <header class="shell nav">
-    <a class="brand" href="#inicio">NIGHT<span>FURY</span></a>
-    <nav class="nav-links" aria-label="Navegação principal"><a href="#videos">Vídeos</a><a href="#contato">Contato</a></nav>
+    <a class="brand" href="#inicio" aria-label="BanguelaDev, início"><i class="brand-mark">B</i>Banguela<span>Dev</span></a>
+    <nav class="nav-links" aria-label="Navegação principal"><a href="#sobre">Sobre</a><a href="#projetos">Projetos</a><a href="#discord">Discord</a><a class="nav-cta" href="#discord">Vamos conversar</a></nav>
   </header>
   <main>
-    <div id="inicio" class="shell hero">
-      <div>
-        <div class="eyebrow">Portfólio de vídeos</div>
-        <h1>Ideias que <em>ganham asas.</em></h1>
-        <p id="hero-text" class="intro"></p>
-        <a class="button" href="#videos">Explorar vídeos <span aria-hidden="true">↓</span></a>
+    <section id="inicio" class="shell hero">
+      <div class="reveal">
+        <div class="eyebrow">Roblox Studio · Discord Bots</div>
+        <h1>Eu transformo ideias em <strong>sistemas</strong> que <em>voam.</em></h1>
+        <p class="intro">Sou <b>BanguelaDev</b>, programador focado em experiências no Roblox e automações inteligentes para comunidades no Discord.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#projetos">Ver projetos <span aria-hidden="true">↓</span></a><a class="button button-secondary" href="#discord">Meu Discord</a></div>
+        <div class="quick-stats"><div><b>LuaU</b><span>Sistemas no Roblox</span></div><div><b>Discord</b><span>Bots e comunidades</span></div><div><b>100%</b><span>Projetos autorais</span></div></div>
       </div>
-      <div class="dragon-orb" aria-hidden="true"><i class="orb-eye"></i></div>
-    </div>
-    <section id="videos" class="shell">
-      <div class="section-heading"><div><div class="eyebrow">Seleção</div><h2>Meus vídeos</h2></div><p>Projetos selecionados, apresentados em uma experiência inspirada no voo noturno de um Fúria da Noite.</p></div>
-      <div id="video-grid" class="video-grid"></div>
+      <div class="hero-art reveal">
+        <div class="cover-frame"><img src="bangueladev-cover.png" alt="Banguela usando óculos escuros"><div class="image-label"><b>BanguelaDev</b><span>Código com personalidade.</span></div></div>
+        <div class="badge"><i></i> Online para projetos</div>
+      </div>
+    </section>
+    <section id="sobre" class="shell reveal">
+      <div class="section-heading"><div><div class="eyebrow">O que eu faço</div><h2>Construo a lógica por trás da diversão.</h2></div><p>Do primeiro script ao lançamento, desenvolvo soluções práticas, organizadas e feitas para a experiência do jogador e da comunidade.</p></div>
+      <div class="about"><article class="about-card"><h3>Desenvolvimento com propósito.</h3><p>Meu foco é criar sistemas robustos para jogos e ferramentas que fazem servidores Discord funcionarem melhor — sem perder identidade e atenção aos detalhes.</p></article><div id="skills" class="skills"></div></div>
+    </section>
+    <section id="projetos" class="shell reveal">
+      <div class="section-heading"><div><div class="eyebrow">Portfólio</div><h2>Projetos selecionados.</h2></div><p>Adicione vídeos, links e descrições diretamente na configuração JavaScript no final desta página.</p></div>
+      <div id="projects" class="projects"></div>
+    </section>
+    <section id="discord" class="shell reveal">
+      <div class="discord-card"><div class="discord-copy"><div class="eyebrow">Comunidade</div><h2>Entre no meu studio.</h2><p>Acompanhe novidades, projetos em desenvolvimento e converse comigo no Discord. Meu usuário é <b>@bangueladev</b>.</p></div><div class="discord-action" id="discord-actions"></div></div>
     </section>
   </main>
-  <footer id="contato" class="footer"><div class="shell">© <span id="year"></span> <span id="footer-name"></span> — Portfólio de vídeos.</div></footer>
+  <footer class="footer"><div class="shell footer-row"><span>© <span id="year"></span> <strong>BanguelaDev</strong>. Desenvolvedor Roblox e Discord.</span><span>Feito com código, criatividade e um toque de roxo.</span></div></footer>
   <script>
-    /* EDITE SOMENTE ESTA ÁREA PARA PERSONALIZAR O PORTFÓLIO. */
+    // CONFIGURAÇÃO DO PORTFÓLIO: altere os dados abaixo para atualizar o site.
     const portfolioConfig = {
-      name: "UN6107617",
-      intro: "Uma coleção de trabalhos em vídeo, com foco em narrativa, ritmo e experiências digitais marcantes.",
-      videos: [
-        { title: "Seu primeiro vídeo", category: "Projeto em destaque", description: "Descreva aqui o objetivo, sua participação e o resultado deste vídeo.", src: "videos/primeiro-video.mp4", poster: "" },
-        { title: "Seu segundo vídeo", category: "Conteúdo criativo", description: "Troque este exemplo por um novo vídeo e uma descrição curta do projeto.", src: "videos/segundo-video.mp4", poster: "" },
-        { title: "Seu terceiro vídeo", category: "Campanha", description: "Use arquivos MP4 hospedados neste repositório ou URLs HTTPS públicas.", src: "videos/terceiro-video.mp4", poster: "" },
-        { title: "Seu quarto vídeo", category: "Bastidores", description: "Cada item da lista gera automaticamente um card de vídeo no portfólio.", src: "videos/quarto-video.mp4", poster: "" }
+      discord: {
+        username: "bangueladev",
+        userId: "239123000438292481",
+        // Cole aqui o convite real do servidor, por exemplo: https://discord.gg/seu-codigo
+        inviteUrl: ""
+      },
+      skills: [
+        { title: "Roblox Studio", description: "Criação de mecânicas, interfaces e sistemas para experiências memoráveis.", mark: "RBX" },
+        { title: "LuaU", description: "Scripts estruturados, desempenho e lógica sólida para seus jogos.", mark: "LU" },
+        { title: "Bots Discord", description: "Automação, comandos e recursos feitos para a sua comunidade.", mark: "BOT" },
+        { title: "Sistemas", description: "Soluções pensadas para escalar, organizar e facilitar o dia a dia.", mark: "SYS" }
+      ],
+      projects: [
+        { title: "Sistema Roblox", type: "Roblox Studio · LuaU", description: "Adicione aqui a descrição de um sistema, jogo ou mecânica que você desenvolveu.", video: "", link: "" },
+        { title: "Bot para Discord", type: "Discord · Automação", description: "Mostre os comandos, integrações e resultados do seu bot para comunidades.", video: "", link: "" },
+        { title: "Projeto em destaque", type: "Vídeo · Case study", description: "Use um vídeo MP4 ou URL pública para demonstrar este projeto em ação.", video: "videos/projeto-destaque.mp4", link: "" },
+        { title: "Próxima criação", type: "Em desenvolvimento", description: "Um espaço pronto para o seu próximo sistema, jogo ou automação.", video: "", link: "" }
       ]
     };
 
-    const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
-    function renderVideos() {
-      document.title = `${portfolioConfig.name} | Portfólio de Vídeos`;
-      document.getElementById('hero-text').textContent = portfolioConfig.intro;
-      document.getElementById('footer-name').textContent = portfolioConfig.name;
-      document.getElementById('year').textContent = new Date().getFullYear();
-      document.getElementById('video-grid').innerHTML = portfolioConfig.videos.map((video) => {
-        const poster = video.poster ? ` poster="${escapeHtml(video.poster)}"` : '';
-        const player = video.src
-          ? `<video controls preload="metadata"${poster}><source src="${escapeHtml(video.src)}" type="video/mp4">Seu navegador não suporta vídeo HTML5.</video>`
-          : '<div class="video-fallback">Adicione uma URL ou arquivo MP4 em <code>src</code>.</div>';
-        return `<article class="video-card"><div class="video-wrap">${player}</div><div class="card-content"><div class="tag">${escapeHtml(video.category)}</div><h3>${escapeHtml(video.title)}</h3><p>${escapeHtml(video.description)}</p></div></article>`;
-      }).join('');
+    const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[character]);
+    const isSafeUrl = (value) => /^https?:\/\//i.test(value || "");
+
+    function renderSkills() {
+      document.getElementById("skills").innerHTML = portfolioConfig.skills.map((skill) => `<article class="skill-card" data-mark="${escapeHtml(skill.mark)}"><b>${escapeHtml(skill.title)}</b><p>${escapeHtml(skill.description)}</p></article>`).join("");
     }
-    renderVideos();
+    function renderProjects() {
+      document.getElementById("projects").innerHTML = portfolioConfig.projects.map((project) => {
+        const video = project.video ? `<video controls preload="metadata"><source src="${escapeHtml(project.video)}" type="video/mp4">Seu navegador não suporta vídeo HTML5.</video>` : '<div class="media-placeholder" aria-hidden="true">▶</div>';
+        const link = isSafeUrl(project.link) ? `<a class="tag" href="${escapeHtml(project.link)}" target="_blank" rel="noopener">Abrir projeto ↗</a>` : "";
+        return `<article class="project-card"><div class="project-media">${video}</div><div class="project-content"><div class="project-meta"><span class="tag">${escapeHtml(project.type)}</span>${link}</div><h3>${escapeHtml(project.title)}</h3><p>${escapeHtml(project.description)}</p></div></article>`;
+      }).join("");
+    }
+    function renderDiscord() {
+      const { username, userId, inviteUrl } = portfolioConfig.discord;
+      const action = isSafeUrl(inviteUrl)
+        ? `<a class="button button-primary" href="${escapeHtml(inviteUrl)}" target="_blank" rel="noopener">Entrar no servidor ↗</a>`
+        : `<button class="button button-primary server-disabled" type="button" title="Adicione o convite real em portfolioConfig.discord.inviteUrl">Convite do studio em breve</button>`;
+      document.getElementById("discord-actions").innerHTML = `${action}<button class="button button-secondary" id="copy-discord" type="button">Copiar @${escapeHtml(username)}</button><span class="discord-id">ID: ${escapeHtml(userId)}</span>`;
+      document.getElementById("copy-discord").addEventListener("click", async (event) => { await navigator.clipboard.writeText(username); event.currentTarget.textContent = "Usuário copiado!"; setTimeout(() => { event.currentTarget.textContent = `Copiar @${username}`; }, 1800); });
+    }
+    function setupReveal() { const observer = new IntersectionObserver((entries) => entries.forEach((entry) => { if (entry.isIntersecting) { entry.target.classList.add("in-view"); observer.unobserve(entry.target); } }), { threshold: .12 }); document.querySelectorAll(".reveal").forEach((element) => observer.observe(element)); }
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderSkills(); renderProjects(); renderDiscord(); setupReveal();
   </script>
 </body>
 </html>
