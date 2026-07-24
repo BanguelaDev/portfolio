@@ -8,7 +8,6 @@
     content="BanguelaDev — Game Developer, LuaU Scripter & Systems Engineer. From simple scripts to full-scale systems.">
   <title>BanguelaDev — Developer Portfolio & CV</title>
 
-  <!-- Fonts: Bricolage Grotesque for Headings, Hanken Grotesk for Body, JetBrains Mono for Code/Tags -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -17,7 +16,6 @@
 
   <style>
     :root {
-      /* Light Mode (Editorial Paper) */
       --paper: #ECE6D8;
       --paper-card: #F4EFE4;
       --paper-card-hover: #EBE4D5;
@@ -40,7 +38,6 @@
     }
 
     html[data-theme="dark"] {
-      /* Dark Mode (Cool Obsidian) */
       --paper: #0E1014;
       --paper-card: #151820;
       --paper-card-hover: #1D222C;
@@ -66,6 +63,308 @@
       padding: 0;
     }
 
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--paper);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 99px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-hover);
+    }
+
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+      z-index: 9999;
+      border-radius: 0 2px 2px 0;
+      transition: width 0.1s linear;
+      pointer-events: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+
+      body,
+      a,
+      button,
+      video,
+      [role="button"],
+      .lang-btn,
+      .lang-switcher,
+      .discord-tag-box,
+      .video-progress-container,
+      .video-btn {
+        cursor: none !important;
+      }
+
+      * {
+        cursor: none !important;
+      }
+    }
+
+    #cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: width .2s var(--ease), height .2s var(--ease), background .2s var(--ease), opacity .2s var(--ease);
+    }
+
+    #cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 26px;
+      height: 26px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width .3s var(--ease), height .3s var(--ease), border-color .3s var(--ease), opacity .2s var(--ease);
+      opacity: 0.55;
+    }
+
+    #cursor-dot.is-hovering {
+      width: 12px;
+      height: 12px;
+      background: var(--accent-hover);
+    }
+
+    #cursor-ring.is-hovering {
+      width: 40px;
+      height: 40px;
+      opacity: 0.35;
+      border-color: var(--accent-hover);
+    }
+
+    #cursor-dot.is-clicking {
+      width: 6px;
+      height: 6px;
+      opacity: 0.7;
+    }
+
+    #cursor-ring.is-clicking {
+      width: 28px;
+      height: 28px;
+    }
+
+    @media (hover: none) {
+
+      #cursor-dot,
+      #cursor-ring {
+        display: none;
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .6s var(--ease), transform .6s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.08s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.16s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.24s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.32s;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      margin-top: 56px;
+    }
+
+    .stat-item {
+      padding: 32px 28px;
+      background: var(--paper-card);
+      text-align: center;
+      transition: background .2s var(--ease);
+    }
+
+    .stat-item:hover {
+      background: var(--paper-card-hover);
+    }
+
+    .stat-num {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--ink-3);
+      margin-top: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+    }
+
+    @media (max-width: 680px) {
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    [data-tooltip] {
+      position: relative;
+    }
+
+    [data-tooltip]::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      background: var(--ink);
+      color: var(--paper);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 7px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .18s var(--ease), transform .18s var(--ease);
+      z-index: 50;
+    }
+
+    [data-tooltip]::after {
+      content: '';
+      position: absolute;
+      bottom: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      border: 5px solid transparent;
+      border-top-color: var(--ink);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .18s var(--ease), transform .18s var(--ease);
+      z-index: 50;
+    }
+
+    [data-tooltip]:hover::before,
+    [data-tooltip]:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-links a.active {
+      color: var(--ink);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    #back-to-top {
+      position: fixed;
+      bottom: 28px;
+      left: 28px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--paper-card);
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      display: grid;
+      place-items: center;
+      z-index: 500;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .3s var(--ease), transform .3s var(--ease), border-color .2s, background .2s;
+      pointer-events: none;
+    }
+
+    #back-to-top.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    #back-to-top:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    #back-to-top svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .cover-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--accent) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .35s var(--ease);
+      mix-blend-mode: multiply;
+      pointer-events: none;
+    }
+
+    html[data-theme="dark"] .cover-card::after {
+      mix-blend-mode: color;
+      opacity: 0;
+    }
+
+    .cover-card:hover::after {
+      opacity: 0.18;
+    }
+
     html {
       scroll-behavior: smooth;
       -webkit-text-size-adjust: 100%;
@@ -83,7 +382,6 @@
       transition: background-color .35s var(--ease), color .35s var(--ease);
     }
 
-    /* Grain Overlay - Anti AI-gradient effect */
     .grain {
       position: fixed;
       inset: 0;
@@ -121,7 +419,6 @@
       margin: 0 auto;
     }
 
-    /* ──────── HEADER & CONTROLS ──────── */
     .site-head {
       position: fixed;
       top: 0;
@@ -196,7 +493,6 @@
       gap: 12px;
     }
 
-    /* Language Switcher Pill */
     .lang-switcher {
       display: inline-flex;
       align-items: center;
@@ -227,7 +523,6 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     }
 
-    /* Theme Toggle */
     .theme-toggle {
       width: 36px;
       height: 36px;
@@ -267,7 +562,6 @@
       display: none;
     }
 
-    /* ──────── HERO SECTION ──────── */
     .hero {
       padding: 150px 0 80px;
       display: grid;
@@ -290,6 +584,25 @@
       font-weight: 700;
       color: var(--ink-2);
       margin-bottom: 24px;
+      min-width: 210px;
+    }
+
+    #hero-badge-text::after {
+      content: '|';
+      color: var(--accent);
+      animation: blink-caret .75s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
     }
 
     .hero-badge i {
@@ -337,6 +650,7 @@
       border-radius: 12px;
       border: 2px solid var(--ink);
       transition: transform .18s var(--ease), box-shadow .18s var(--ease), background .18s var(--ease), color .18s var(--ease);
+      cursor: none;
     }
 
     .btn-primary {
@@ -361,7 +675,6 @@
       border-color: var(--ink);
     }
 
-    /* Hero Avatar Frame */
     .hero-art {
       position: relative;
     }
@@ -384,7 +697,6 @@
       display: block;
     }
 
-    /* ──────── SECTION LAYOUTS ──────── */
     section {
       padding: 90px 0;
       border-bottom: 1px solid var(--line);
@@ -417,7 +729,6 @@
       max-width: 600px;
     }
 
-    /* ──────── ABOUT & CV APPROACH ──────── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -450,7 +761,6 @@
       margin-bottom: 0;
     }
 
-    /* ──────── SKILLS MATRIX ──────── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -497,7 +807,6 @@
       line-height: 1.6;
     }
 
-    /* ──────── PROJECTS GRID & VIDEO PLAYER ──────── */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -535,7 +844,6 @@
       cursor: pointer;
     }
 
-    /* Video Player Overlay Controls */
     .video-overlay-controls {
       position: absolute;
       top: 12px;
@@ -568,7 +876,6 @@
       transform: scale(1.08);
     }
 
-    /* Always Visible Video Progress Bar */
     .video-progress-container {
       position: absolute;
       bottom: 0;
@@ -629,7 +936,6 @@
       flex-grow: 1;
     }
 
-    /* ──────── CONTACT & DISCORD ──────── */
     .contact-card {
       background: var(--paper-card);
       border: 2px solid var(--line-strong);
@@ -671,7 +977,6 @@
       color: var(--ink-2);
     }
 
-    /* ──────── FOOTER & TOAST ──────── */
     footer {
       padding: 40px 0;
       color: var(--ink-3);
@@ -708,7 +1013,6 @@
       opacity: 1;
     }
 
-    /* ──────── RESPONSIVE BREAKPOINTS ──────── */
     @media (max-width: 860px) {
       .hero {
         grid-template-columns: 1fr;
@@ -740,10 +1044,13 @@
 
 <body>
 
-  <!-- Subtle Noise Grain Filter -->
+  <div id="scroll-progress"></div>
+
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
   <div class="grain"></div>
 
-  <!-- Header / Navigation -->
   <header class="site-head">
     <div class="shell head-wrap">
       <a class="brand" href="#hero">
@@ -759,13 +1066,11 @@
       </nav>
 
       <div class="nav-controls">
-        <!-- Visible Language Switcher Button (English default) -->
         <div class="lang-switcher" aria-label="Language Selector">
           <button class="lang-btn active" id="lang-en" onclick="setLanguage('en')">EN</button>
           <button class="lang-btn" id="lang-pt" onclick="setLanguage('pt')">PT</button>
         </div>
 
-        <!-- Theme Toggle -->
         <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Theme" aria-label="Toggle Theme">
           <svg class="icon-moon" viewBox="0 0 24 24">
             <path d="M12.3 22A10 10 0 0 1 12 2a9.5 9.5 0 0 0 8.3 14c-.9 3.4-4 6-8 6z" />
@@ -780,10 +1085,12 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
     <section id="hero" class="shell hero">
       <div>
-        <div></div>
+        <div class="hero-badge">
+          <i></i>
+          <span id="hero-badge-text">Available for work</span>
+        </div>
         <h1 data-i18n-html="hero.headline">From simple scripts to <strong>full-scale systems.</strong></h1>
         <p class="hero-intro" data-i18n="hero.intro">
           Hi, I'm BanguelaDev. I build Roblox mechanics in LuaU, custom web apps, API automations, and game tools.
@@ -802,9 +1109,8 @@
       </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="shell">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <span class="sec-eyebrow" data-i18n="about.eyebrow">Approach</span>
         <h2 class="sec-title" data-i18n="about.title">Simple utilities, complex mechanics, and everything in between.
         </h2>
@@ -830,15 +1136,33 @@
             <li>⚡ <strong>LuaU / Roblox Studio</strong> (OOP, Client/Server, Physics, UI)</li>
             <li>🌐 <strong>Web Stack</strong> (HTML5, Vanilla CSS, JS, REST APIs)</li>
             <li>🤖 <strong>Automations</strong> (Discord.js, Python, Webhooks, Bots)</li>
-            <li>💾 <strong>Databases & Storage</strong> (DataStore Service, Anti-dupe, JSON)</li>
+            <li>💾 <strong>Databases &amp; Storage</strong> (DataStore Service, Anti-dupe, JSON)</li>
           </ul>
         </div>
       </div>
+
+      <!-- <div class="stats-row reveal">
+        <div class="stat-item">
+          <span class="stat-num" data-count="4">0</span>
+          <span class="stat-label" data-i18n="stats.projects">Projects Built</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="3">0</span>
+          <span class="stat-label" data-i18n="stats.years">Years Scripting</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="4">0</span>
+          <span class="stat-label" data-i18n="stats.skills">Core Specialties</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num" data-count="100">0</span>
+          <span class="stat-label" data-i18n="stats.focus">% Client Focus</span>
+        </div>
+      </div> -->
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="shell">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <span class="sec-eyebrow" data-i18n="skills.eyebrow">Skills & Capabilities</span>
         <h2 class="sec-title" data-i18n="skills.title">What I bring to the table.</h2>
         <p class="sec-subtitle" data-i18n="skills.subtitle">Pragmatic development across game systems, tools, and web
@@ -847,9 +1171,8 @@
       <div id="skills-container" class="skills-grid"></div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="shell">
-      <div class="sec-head">
+      <div class="sec-head reveal">
         <span class="sec-eyebrow" data-i18n="projects.eyebrow">Selected Work</span>
         <h2 class="sec-title" data-i18n="projects.title">Projects & Demos</h2>
         <p class="sec-subtitle" data-i18n="projects.subtitle">Video demonstrations of functional systems and tools I've
@@ -858,7 +1181,6 @@
       <div id="projects-container" class="projects-grid"></div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="shell" style="border-bottom: none;">
       <div class="contact-card">
         <div class="contact-info">
@@ -872,7 +1194,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="shell footer-wrap">
       <span>© <span id="year"></span> <strong>BanguelaDev</strong>. <span data-i18n="footer.rights">All rights
@@ -884,11 +1205,16 @@
     </div>
   </footer>
 
-  <!-- Toast Notification -->
+  <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top"
+    aria-label="Back to top">
+    <svg viewBox="0 0 24 24">
+      <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+    </svg>
+  </button>
+
   <div id="toast" class="toast">Tag copied to clipboard!</div>
 
   <script>
-    // ──────── TRANSLATIONS DICTIONARY (EN default / PT toggle) ────────
     const translations = {
       en: {
         nav: {
@@ -968,6 +1294,12 @@
         },
         footer: {
           rights: "All rights reserved."
+        },
+        stats: {
+          projects: "Projects Built",
+          years: "Years Scripting",
+          skills: "Core Specialties",
+          focus: "% Client Focus"
         }
       },
       pt: {
@@ -1048,6 +1380,12 @@
         },
         footer: {
           rights: "Todos os direitos reservados."
+        },
+        stats: {
+          projects: "Projetos Entregues",
+          years: "Anos Programando",
+          skills: "Especialidades",
+          focus: "% Foco no Cliente"
         }
       }
     };
@@ -1064,16 +1402,13 @@
       if (!translations[lang]) return;
       currentLang = lang;
 
-      // Update active state on language buttons
       document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll(`#lang-${lang}, #footer-lang-${lang}`).forEach(btn => btn.classList.add('active'));
 
-      // Update HTML lang attribute
       document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
 
       const t = translations[lang];
 
-      // Update simple text elements
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const path = el.getAttribute('data-i18n').split('.');
         let val = t;
@@ -1081,7 +1416,6 @@
         if (typeof val === 'string') el.textContent = val;
       });
 
-      // Update HTML content elements
       document.querySelectorAll('[data-i18n-html]').forEach(el => {
         const path = el.getAttribute('data-i18n-html').split('.');
         let val = t;
@@ -1092,6 +1426,14 @@
       renderSkills(t.skills.items);
       renderProjects(t.projects.items);
       renderContact(t.contact);
+      if (t.stats) {
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const path = el.getAttribute('data-i18n').split('.');
+          let val = t;
+          path.forEach(key => { if (val) val = val[key]; });
+          if (typeof val === 'string') el.textContent = val;
+        });
+      }
     }
 
     function toggleTheme() {
@@ -1112,9 +1454,15 @@
     }
 
     function renderSkills(items) {
+      const tooltips = {
+        'RBX': 'Roblox / LuaU',
+        'WEB': 'HTML · CSS · JS',
+        'BOT': 'Discord.js · Python',
+        'SYS': 'DataStores · JSON'
+      };
       document.getElementById('skills-container').innerHTML = items.map(skill => `
         <div class="skill-box">
-          <span class="skill-tag">${escapeHtml(skill.mark)}</span>
+          <span class="skill-tag" data-tooltip="${tooltips[skill.mark] || skill.mark}">${escapeHtml(skill.mark)}</span>
           <h4>${escapeHtml(skill.title)}</h4>
           <p>${escapeHtml(skill.description)}</p>
         </div>
@@ -1159,7 +1507,6 @@
         `;
       }).join('');
 
-      // Attach video control event listeners
       items.forEach((project, index) => {
         const video = document.getElementById(`proj-video-${index}`);
         const progressBar = document.getElementById(`proj-progress-${index}`);
@@ -1239,9 +1586,179 @@
       });
     }
 
-    // Initialize
     document.getElementById('year').textContent = new Date().getFullYear();
     setLanguage('en');
+
+    (function () {
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
+      if (!dot || !ring) return;
+
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+      let mouseX = -200, mouseY = -200;
+      let ringX = -200, ringY = -200;
+      let rafId;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top = mouseY + 'px';
+      });
+
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.24;
+        ringY += (mouseY - ringY) * 0.24;
+        ring.style.left = ringX + 'px';
+        ring.style.top = ringY + 'px';
+        rafId = requestAnimationFrame(animateRing);
+      }
+      animateRing();
+
+      const hoverTargets = 'a, button, [role="button"], .project-card, .skill-box, .cover-card, .video-progress-container, .video-btn';
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest(hoverTargets)) {
+          dot.classList.add('is-hovering');
+          ring.classList.add('is-hovering');
+        }
+      });
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest(hoverTargets)) {
+          dot.classList.remove('is-hovering');
+          ring.classList.remove('is-hovering');
+        }
+      });
+
+      document.addEventListener('mousedown', () => {
+        dot.classList.add('is-clicking');
+        ring.classList.add('is-clicking');
+      });
+      document.addEventListener('mouseup', () => {
+        dot.classList.remove('is-clicking');
+        ring.classList.remove('is-clicking');
+      });
+    })();
+
+    (function () {
+      const bar = document.getElementById('scroll-progress');
+      if (!bar) return;
+      window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = pct + '%';
+      }, { passive: true });
+    })();
+
+    (function () {
+      const targets = document.querySelectorAll('.reveal');
+      if (!targets.length) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      targets.forEach(el => obs.observe(el));
+    })();
+
+    (function () {
+      const el = document.getElementById('hero-badge-text');
+      if (!el) return;
+      const phrases = ['Available for work', 'LuaU Developer', 'Web & APIs', 'Game Systems'];
+      let phraseIdx = 0;
+      let charIdx = 0;
+      let deleting = false;
+      let wait = 0;
+
+      function type() {
+        const current = phrases[phraseIdx];
+        if (deleting) {
+          charIdx--;
+        } else {
+          charIdx++;
+        }
+
+        el.textContent = current.slice(0, charIdx);
+
+        let delay = deleting ? 55 : 90;
+
+        if (!deleting && charIdx === current.length) {
+          delay = 2000;
+          deleting = true;
+        } else if (deleting && charIdx === 0) {
+          deleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          delay = 400;
+        }
+
+        setTimeout(type, delay);
+      }
+
+      setTimeout(type, 1200);
+    })();
+
+    (function () {
+      function animateCounter(el, target, duration) {
+        const start = performance.now();
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target);
+          if (progress < 1) requestAnimationFrame(update);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(update);
+      }
+
+      const counters = document.querySelectorAll('.stat-num[data-count]');
+      if (!counters.length) return;
+
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.count, 10);
+            animateCounter(el, target, 1200);
+            obs.unobserve(el);
+          }
+        });
+      }, { threshold: 0.4 });
+
+      counters.forEach(el => obs.observe(el));
+    })();
+
+    (function () {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+      if (!sections.length || !navLinks.length) return;
+
+      function setActive() {
+        const scrollY = window.scrollY + 120;
+        let current = '';
+        sections.forEach(sec => {
+          if (sec.offsetTop <= scrollY) current = sec.id;
+        });
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+      }
+
+      window.addEventListener('scroll', setActive, { passive: true });
+      setActive();
+    })();
+
+    (function () {
+      const btn = document.getElementById('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+    })();
   </script>
 </body>
 
