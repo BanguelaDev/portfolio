@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description"
-    content="BanguelaDev — Game Developer, LuaU Scripter & Systems Engineer. From simple scripts to full-scale systems.">
-  <title>BanguelaDev — Developer Portfolio & CV</title>
+  <meta name="description" content="BanguelaDev Portfólio">
+  <title>BanguelaDev Portfólio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -456,8 +455,16 @@
       display: grid;
       place-items: center;
       font-size: 14px;
+      overflow: hidden;
       transform: rotate(-6deg);
       transition: transform .25s var(--ease);
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .brand:hover .brand-mark {
@@ -681,20 +688,90 @@
 
     .cover-card {
       position: relative;
-      border-radius: 20px;
+      display: block;
+      border-radius: 24px;
       border: 2px solid var(--line-strong);
-      background: var(--paper-card);
+      background: radial-gradient(circle at 50% 45%, var(--accent-light) 0%, var(--paper-card) 80%);
       overflow: hidden;
       box-shadow: var(--shadow);
       aspect-ratio: 4 / 3;
+      transition: transform .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+      text-decoration: none;
+    }
+
+    html[data-theme="dark"] .cover-card {
+      background: radial-gradient(circle at 50% 45%, rgba(139, 123, 181, 0.28) 0%, #11141C 82%);
+    }
+
+    .cover-card:hover {
+      transform: translateY(-6px) scale(1.015);
+      border-color: var(--accent);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), 6px 6px 0px var(--accent);
     }
 
     .cover-card img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center 35%;
+      object-fit: contain;
+      object-position: center 40%;
       display: block;
+      padding: 12px;
+      filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.45));
+      transition: transform .4s var(--ease), filter .4s var(--ease);
+    }
+
+    .cover-card:hover img {
+      transform: scale(1.06);
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.65));
+    }
+
+    .roblox-live-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 99px;
+      background: rgba(14, 16, 20, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #F3F1EC;
+      z-index: 6;
+      transition: background .25s var(--ease), border-color .25s var(--ease), transform .25s var(--ease);
+    }
+
+    .cover-card:hover .roblox-live-badge {
+      background: var(--accent);
+      border-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .roblox-live-badge .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22C55E;
+      box-shadow: 0 0 10px #22C55E;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.35);
+        opacity: 0.7;
+      }
     }
 
     section {
@@ -1039,6 +1116,101 @@
         padding: 32px;
       }
     }
+
+    /* ── Decorative GIFs (Stickers) ── */
+    .deco-gif {
+      position: absolute;
+      object-fit: contain;
+      pointer-events: none;
+      opacity: 0.88;
+      z-index: 5;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+      transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+    }
+
+    .deco-gif:hover {
+      transform: scale(1.15) rotate(0deg) !important;
+      pointer-events: auto;
+    }
+
+    .hero-art {
+      position: relative;
+    }
+
+    .deco-gif--hero {
+      top: -22px;
+      right: -22px;
+      width: 90px;
+      height: 90px;
+      transform: rotate(14deg);
+    }
+
+    .cv-card-stack {
+      position: relative;
+    }
+
+    .deco-gif--about {
+      top: -25px;
+      right: -15px;
+      width: 80px;
+      height: 80px;
+      transform: rotate(-10deg);
+    }
+
+    .deco-gif--skills {
+      left: -130px;
+      top: 10px;
+      width: 100px;
+      height: 100px;
+      transform: rotate(-12deg);
+    }
+
+    .deco-gif--projects {
+      top: -15px;
+      right: 20px;
+      width: 85px;
+      height: 85px;
+      transform: rotate(10deg);
+    }
+
+    .contact-card {
+      position: relative;
+    }
+
+    .deco-gif--contact {
+      top: -52px;
+      right: 24px;
+      width: 85px;
+      height: 85px;
+      transform: rotate(8deg);
+    }
+
+    @media (max-width: 1350px) {
+      .deco-gif--skills {
+        left: auto;
+        right: 15px;
+        top: -45px;
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    @media (max-width: 680px) {
+
+      .deco-gif--hero,
+      .deco-gif--about,
+      .deco-gif--skills,
+      .deco-gif--projects,
+      .deco-gif--contact {
+        width: 60px;
+        height: 60px;
+        top: -15px;
+      }
+
+      .deco-gif--contact {
+        top: -35px;
+      }
+    }
   </style>
 </head>
 
@@ -1054,7 +1226,10 @@
   <header class="site-head">
     <div class="shell head-wrap">
       <a class="brand" href="#hero">
-        <div class="brand-mark">B</div>
+        <div class="brand-mark">
+          <!-- Substitua o src abaixo pela imagem que quiser -->
+          <img src="brand-logo.png" alt="BanguelaDev logo" onerror="this.parentElement.textContent='B'">
+        </div>
         Banguela<span>Dev</span>
       </a>
 
@@ -1084,6 +1259,8 @@
     </div>
   </header>
 
+
+
   <main>
     <section id="hero" class="shell hero">
       <div>
@@ -1093,8 +1270,8 @@
         </div>
         <h1 data-i18n-html="hero.headline">From simple scripts to <strong>full-scale systems.</strong></h1>
         <p class="hero-intro" data-i18n="hero.intro">
-          Hi, I'm BanguelaDev. I build Roblox mechanics in LuaU, custom web apps, API automations, and game tools.
-          Whether you need a quick script or a complete platform, I keep code clean, fast, and objective.
+          Fullstack developer focused on Roblox Studio. I build game mechanics, systems, and Discord bots — whatever the
+          project demands, I get it done right.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#projects" data-i18n="hero.viewProjects">View Projects ↓</a>
@@ -1103,13 +1280,22 @@
       </div>
 
       <div class="hero-art">
-        <div class="cover-card">
-          <img src="bangueladev-cover.png" alt="BanguelaDev Avatar">
-        </div>
+        <img class="deco-gif deco-gif--hero" src="gifs/banguela1.gif" alt="" aria-hidden="true"
+          onerror="this.style.display='none'">
+        <a class="cover-card" href="https://www.roblox.com/users/64701413/profile" target="_blank" rel="noopener"
+          title="Ver perfil no Roblox">
+          <img id="roblox-avatar-img"
+            src="https://tr.rbxcdn.com/30DAY-Avatar-24DEEB7DA722147F992CE11F93007E94-Png/720/720/Avatar/Png/noFilter"
+            alt="BanguelaDev Roblox Avatar">
+          <div class="roblox-live-badge">
+            <span class="status-dot"></span>
+            <span>Roblox Profile ↗</span>
+          </div>
+        </a>
       </div>
     </section>
 
-    <section id="about" class="shell">
+    <section id="about" class="shell" style="position: relative; overflow: visible;">
       <div class="sec-head reveal">
         <span class="sec-eyebrow" data-i18n="about.eyebrow">Approach</span>
         <h2 class="sec-title" data-i18n="about.title">Simple utilities, complex mechanics, and everything in between.
@@ -1117,64 +1303,52 @@
       </div>
       <div class="about-grid">
         <div class="cv-card">
-          <h3>Direct & Practical Engineering</h3>
+          <h3 data-i18n="about.cardTitle">Straight to the point</h3>
           <p data-i18n="about.desc1">
-            I don't overcomplicate things with empty buzzwords. I write clean, performant code that solves real
-            problems—whether that's fixing a quick UI bug, building a Discord bot, or programming full combat physics
-            and Datastores.
+            My job is to solve your project's problem. New mechanic, stubborn bug or a full system built from scratch, I
+            get it done.
           </p>
           <p data-i18n="about.desc2">
-            Years of scripting and systems building means I can jump straight into existing projects or architect fresh
-            features from scratch.
+            Fully focused on Roblox Studio and Discord bots. That's my lane, and I stay sharp in it.
           </p>
         </div>
-        <div class="cv-card" style="background: var(--paper); border-style: dashed;">
-          <h3 style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--accent);">// Core Stack
+        <div class="cv-card cv-card-stack" style="background: var(--paper); border-style: dashed;">
+          <img class="deco-gif deco-gif--about" src="gifs/banguela2.gif" alt="" aria-hidden="true"
+            onerror="this.style.display='none'">
+          <h3 data-i18n="about.stackTitle"
+            style="font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; color: var(--accent);">// Core Stack
           </h3>
           <ul
             style="list-style: none; display: grid; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--ink-2);">
             <li>⚡ <strong>LuaU / Roblox Studio</strong> (OOP, Client/Server, Physics, UI)</li>
-            <li>🌐 <strong>Web Stack</strong> (HTML5, Vanilla CSS, JS, REST APIs)</li>
-            <li>🤖 <strong>Automations</strong> (Discord.js, Python, Webhooks, Bots)</li>
-            <li>💾 <strong>Databases &amp; Storage</strong> (DataStore Service, Anti-dupe, JSON)</li>
+            <li>🤖 <strong>Discord Bots</strong> (Discord.js, Slash Commands, Webhooks)</li>
+            <li>💾 <strong>DataStores</strong> (Salvamento, Anti-dupe, Sync de dados)</li>
+            <li>🎮 <strong>Game Systems</strong> (Combate, Veículos, NPCs, Inventário)</li>
           </ul>
         </div>
       </div>
-
-      <!-- <div class="stats-row reveal">
-        <div class="stat-item">
-          <span class="stat-num" data-count="4">0</span>
-          <span class="stat-label" data-i18n="stats.projects">Projects Built</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num" data-count="3">0</span>
-          <span class="stat-label" data-i18n="stats.years">Years Scripting</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num" data-count="4">0</span>
-          <span class="stat-label" data-i18n="stats.skills">Core Specialties</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num" data-count="100">0</span>
-          <span class="stat-label" data-i18n="stats.focus">% Client Focus</span>
-        </div>
-      </div> -->
     </section>
 
-    <section id="skills" class="shell">
+    <section id="skills" class="shell" style="position: relative; overflow: visible;">
+      <!-- GIF decorativo na seção Skills -->
+      <img class="deco-gif deco-gif--skills" src="gifs/banguela3.gif" alt="" aria-hidden="true"
+        onerror="this.style.display='none'">
       <div class="sec-head reveal">
         <span class="sec-eyebrow" data-i18n="skills.eyebrow">Skills & Capabilities</span>
         <h2 class="sec-title" data-i18n="skills.title">What I bring to the table.</h2>
-        <p class="sec-subtitle" data-i18n="skills.subtitle">Pragmatic development across game systems, tools, and web
-          backends.</p>
+        <p class="sec-subtitle" data-i18n="skills.subtitle">Focused development on Roblox game systems and Discord bots.
+        </p>
       </div>
       <div id="skills-container" class="skills-grid"></div>
     </section>
 
-    <section id="projects" class="shell">
+    <section id="projects" class="shell" style="position: relative; overflow: visible;">
+      <!-- GIF decorativo na seção Projetos -->
+      <img class="deco-gif deco-gif--projects" src="gifs/banguela4.gif" alt="" aria-hidden="true"
+        onerror="this.style.display='none'">
       <div class="sec-head reveal">
         <span class="sec-eyebrow" data-i18n="projects.eyebrow">Selected Work</span>
-        <h2 class="sec-title" data-i18n="projects.title">Projects & Demos</h2>
+        <h2 class="sec-title" data-i18n="projects.title">Projects &amp; Demos</h2>
         <p class="sec-subtitle" data-i18n="projects.subtitle">Video demonstrations of functional systems and tools I've
           built.</p>
       </div>
@@ -1183,6 +1357,8 @@
 
     <section id="contact" class="shell" style="border-bottom: none;">
       <div class="contact-card">
+        <img class="deco-gif deco-gif--contact" src="gifs/banguela5.gif" alt="" aria-hidden="true"
+          onerror="this.src='gifs/banguela4.gif'; this.onerror=function(){this.style.display='none';};">
         <div class="contact-info">
           <span class="sec-eyebrow" data-i18n="contact.eyebrow">Contact</span>
           <h2 data-i18n="contact.title">Have a project in mind?</h2>
@@ -1224,27 +1400,29 @@
           contact: "Contact"
         },
         hero: {
-          role: "Game & Systems Developer",
+          role: "Roblox & Discord Developer",
           headline: "From simple scripts to <strong>full-scale systems.</strong>",
-          intro: "Hi, I'm BanguelaDev. I build Roblox mechanics in LuaU, custom web apps, API automations, and game tools. Whether you need a quick script or a complete platform, I keep code clean, fast, and objective.",
+          intro: "Fullstack developer focused on Roblox Studio. I build game mechanics, systems, and Discord bots. Whatever the project needs, I get it done.",
           viewProjects: "View Projects ↓",
           contactMe: "Let's Talk"
         },
         about: {
           eyebrow: "Approach",
           title: "Simple utilities, complex mechanics, and everything in between.",
-          desc1: "I don't overcomplicate things with empty buzzwords. I write clean, performant code that solves real problems—whether that's fixing a quick UI bug, building a Discord bot, or programming full combat physics and Datastores.",
-          desc2: "Years of scripting and systems building means I can jump straight into existing projects or architect fresh features from scratch."
+          cardTitle: "Straight to the point",
+          stackTitle: "// Core Stack",
+          desc1: "My job is to solve your project's problem. New mechanic, stubborn bug or a full system built from scratch, I get it done.",
+          desc2: "Fully focused on Roblox Studio and Discord bots. That's my lane, and I stay sharp in it."
         },
         skills: {
           eyebrow: "Skills & Capabilities",
           title: "What I bring to the table.",
-          subtitle: "Pragmatic development across game systems, tools, and web backends.",
+          subtitle: "Focused development on Roblox game systems and Discord bots.",
           items: [
             { title: "LuaU & Game Systems", description: "Combat mechanics, movement, physics, vehicle customization, and client-server sync.", mark: "RBX" },
-            { title: "Web & API Development", description: "Custom web applications, REST APIs, JSON endpoints, and dynamic responsive UIs.", mark: "WEB" },
-            { title: "Bots & Automations", description: "Discord bots, moderation tools, virtual economy systems, and automated webhooks.", mark: "BOT" },
-            { title: "DataStores & Systems", description: "Secure state management, save systems, anti-dupe safeguards, and structured data.", mark: "SYS" }
+            { title: "Discord Bots", description: "Slash commands, moderation tools, virtual economy systems, and automated webhooks.", mark: "BOT" },
+            { title: "DataStores & Systems", description: "Secure state management, save systems, anti-dupe safeguards, and structured data.", mark: "SYS" },
+            { title: "Game UI & UX", description: "Polished in-game interfaces, HUDs, inventory screens, and responsive mobile layouts.", mark: "UI" }
           ]
         },
         projects: {
@@ -1294,12 +1472,6 @@
         },
         footer: {
           rights: "All rights reserved."
-        },
-        stats: {
-          projects: "Projects Built",
-          years: "Years Scripting",
-          skills: "Core Specialties",
-          focus: "% Client Focus"
         }
       },
       pt: {
@@ -1310,27 +1482,29 @@
           contact: "Contato"
         },
         hero: {
-          role: "Desenvolvedor de Games & Sistemas",
-          headline: "De scripts básicos a <strong>sistemas completos.</strong>",
-          intro: "Olá, sou o BanguelaDev. Desenvolvo mecânicas em LuaU no Roblox, aplicações web, automações e APIs. Seja um script rápido ou uma plataforma inteira, meu foco é entregas diretas, código limpo e alto desempenho.",
+          role: "Desenvolvedor Roblox & Discord",
+          headline: "De scripts simples a <strong>sistemas completos.</strong>",
+          intro: "Desenvolvedor fullstack focado em Roblox Studio. Construo mecânicas de jogo, sistemas e bots para Discord. Se o projeto precisar, eu faço.",
           viewProjects: "Ver Projetos ↓",
           contactMe: "Falar comigo"
         },
         about: {
           eyebrow: "Abordagem",
-          title: "Utilitários simples, mecânicas complexas e tudo no meio do caminho.",
-          desc1: "Sem palavras complicadas ou enrolação. Escrevo código limpo e performático focado em resolver problemas reais — desde ajustar uma UI até programar sistemas de física de combate ou arquitetura de salvamento de dados.",
-          desc2: "Com anos de experiência em lógica e desenvolvimento de sistemas, trabalho tanto no aprimoramento de códigos existentes quanto na criação de projetos do zero."
+          title: "Utilitários simples, mecânicas complexas e tudo que vier no meio.",
+          cardTitle: "Código direto ao ponto",
+          stackTitle: "// Stack Principal",
+          desc1: "Meu trabalho é resolver o problema do seu projeto. Mecânica nova, bug persistente ou sistema do zero, eu entrego.",
+          desc2: "Foco total em Roblox Studio e bots para Discord. É o que eu faço, e faço bem."
         },
         skills: {
           eyebrow: "Habilidades",
           title: "O que eu desenvolvo.",
-          subtitle: "Desenvolvimento prático abrangendo games, ferramentas e sistemas web.",
+          subtitle: "Desenvolvimento focado em sistemas de jogo no Roblox e bots para Discord.",
           items: [
-            { title: "LuaU & Game Systems", description: "Mecânicas de combate, movimentação, física, veículos e sincronização cliente-servidor.", mark: "RBX" },
-            { title: "Desenvolvimento Web & APIs", description: "Aplicações web sob medida, APIs REST, consumo de endpoints JSON e interfaces responsivas.", mark: "WEB" },
-            { title: "Automações & Bots", description: "Bots para Discord, ferramentas de moderação, economia virtual e webhooks automatizados.", mark: "BOT" },
-            { title: "DataStores & Sistemas", description: "Gerenciamento seguro de dados, salvamento, prevenção de bugs e estruturação de dados.", mark: "SYS" }
+            { title: "LuaU & Sistemas de Jogo", description: "Mecânicas de combate, movimentação, física, veículos e sincronização cliente-servidor.", mark: "RBX" },
+            { title: "Bots para Discord", description: "Slash commands, ferramentas de moderação, economia virtual e webhooks automatizados.", mark: "BOT" },
+            { title: "DataStores & Sistemas", description: "Gerenciamento seguro de dados, salvamento, prevenção de duplicatas e estruturação.", mark: "SYS" },
+            { title: "UI & UX de Jogo", description: "Interfaces in-game refinadas, HUDs, inventários e layouts responsivos para mobile.", mark: "UI" }
           ]
         },
         projects: {
@@ -1380,12 +1554,6 @@
         },
         footer: {
           rights: "Todos os direitos reservados."
-        },
-        stats: {
-          projects: "Projetos Entregues",
-          years: "Anos Programando",
-          skills: "Especialidades",
-          focus: "% Foco no Cliente"
         }
       }
     };
@@ -1426,14 +1594,6 @@
       renderSkills(t.skills.items);
       renderProjects(t.projects.items);
       renderContact(t.contact);
-      if (t.stats) {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const path = el.getAttribute('data-i18n').split('.');
-          let val = t;
-          path.forEach(key => { if (val) val = val[key]; });
-          if (typeof val === 'string') el.textContent = val;
-        });
-      }
     }
 
     function toggleTheme() {
@@ -1458,7 +1618,8 @@
         'RBX': 'Roblox / LuaU',
         'WEB': 'HTML · CSS · JS',
         'BOT': 'Discord.js · Python',
-        'SYS': 'DataStores · JSON'
+        'SYS': 'DataStores · JSON',
+        'UI': 'UI Design · UX'
       };
       document.getElementById('skills-container').innerHTML = items.map(skill => `
         <div class="skill-box">
@@ -1668,14 +1829,23 @@
     (function () {
       const el = document.getElementById('hero-badge-text');
       if (!el) return;
-      const phrases = ['Available for work', 'LuaU Developer', 'Web & APIs', 'Game Systems'];
+
+      const phraseMap = {
+        en: ['Available for work', 'LuaU Developer', 'Discord Bots', 'Game Systems'],
+        pt: ['Disponível para trabalho', 'Desenvolvedor LuaU', 'Bots para Discord', 'Sistemas de Jogo']
+      };
+
       let phraseIdx = 0;
       let charIdx = 0;
       let deleting = false;
-      let wait = 0;
+
+      function getPhrases() {
+        return phraseMap[currentLang] || phraseMap.en;
+      }
 
       function type() {
-        const current = phrases[phraseIdx];
+        const phrases = getPhrases();
+        const current = phrases[phraseIdx % phrases.length];
         if (deleting) {
           charIdx--;
         } else {
@@ -1691,7 +1861,7 @@
           deleting = true;
         } else if (deleting && charIdx === 0) {
           deleting = false;
-          phraseIdx = (phraseIdx + 1) % phrases.length;
+          phraseIdx++;
           delay = 400;
         }
 
@@ -1758,6 +1928,40 @@
       window.addEventListener('scroll', () => {
         btn.classList.toggle('visible', window.scrollY > 400);
       }, { passive: true });
+    })();
+
+    (function fetchRobloxAvatar() {
+      const userId = "64701413";
+      const ts = Date.now();
+      const directUrl = `https://thumbnails.roblox.com/v1/users/avatar?userIds=${userId}&size=720x720&format=Png&isCircular=false&_=${ts}`;
+      const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://thumbnails.roblox.com/v1/users/avatar?userIds=${userId}&size=720x720&format=Png&isCircular=false`)}`;
+
+      function updateImg(imageUrl) {
+        const img = document.getElementById('roblox-avatar-img');
+        if (!img || !imageUrl) return;
+        const freshUrl = imageUrl.includes('?') ? `${imageUrl}&_=${ts}` : `${imageUrl}?_=${ts}`;
+        img.src = freshUrl;
+      }
+
+      fetch(directUrl, { cache: 'no-store' })
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.data && data.data[0] && data.data[0].imageUrl) {
+            updateImg(data.data[0].imageUrl);
+          } else {
+            throw new Error("Invalid API response");
+          }
+        })
+        .catch(() => {
+          fetch(proxyUrl, { cache: 'no-store' })
+            .then(res => res.json())
+            .then(data => {
+              if (data && data.data && data.data[0] && data.data[0].imageUrl) {
+                updateImg(data.data[0].imageUrl);
+              }
+            })
+            .catch(() => { });
+        });
     })();
   </script>
 </body>
